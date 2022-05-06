@@ -47,7 +47,7 @@ function checkPlintho(){
 
 function otherColor(){
     var thisDiv = $('#hasSyndetikoDiv');
-    if (document.getElementById("SyndetikoYliko").value == "otherColor"){
+    if (document.getElementById("SM_syndetiko_uliko").value == "other"){
         thisDiv.slideToggle();
     }else{
         if($("#hasSyndetikoDiv").css("display") == "grid"){
@@ -56,4 +56,126 @@ function otherColor(){
     }
 }
 
+function otherEpixrisma(){
+    var thisDiv = $('#hasEpixrismaDiv');
+    if (document.getElementById("SM_epixrisma_xroma").value == "other"){
+        thisDiv.slideToggle();
+    }else{
+        if($("#hasEpixrismaDiv").css("display") == "grid"){
+            thisDiv.slideToggle();
+        }
+    }
+}
 
+function checkKeramoplastikos(){
+    var thisDiv = $('#hasKeramoplastikosDiv');
+    thisDiv.slideToggle();
+}
+
+
+function checkSpolia(){
+    var thisDiv = $('#hasSpoliaDiv');
+    thisDiv.slideToggle();
+}
+
+function checkXilo(){
+    var thisDiv = $('#hasXiloDiv');
+    thisDiv.slideToggle();
+}
+
+
+const scroller = document.querySelector("#firstScreenContent");
+
+var btn=$('#goUpButton');
+
+scroller.addEventListener("scroll", event => {
+    if(scroller.scrollTop > 100){
+        btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+});
+
+btn.on('click', function(e) {
+    e.preventDefault();
+    $('#firstScreenContent').animate({scrollTop:0}, '300');
+});
+
+
+const scroller2 = document.querySelector("#secondScreenContent");
+
+var btn2=$('#goUpButton2');
+
+scroller2.addEventListener("scroll", event => {
+    if(scroller2.scrollTop > 100){
+        btn2.addClass('show');
+    } else {
+      btn2.removeClass('show');
+    }
+});
+
+btn2.on('click', function(e) {
+    e.preventDefault();
+    $('#secondScreenContent').animate({scrollTop:0}, '300');
+});
+
+// =========================Save==================
+
+$('#saveSMbutton').on('click', function(e) {
+    e.preventDefault();
+    $('#firstScreenContent').animate({scrollTop:0}, '300');
+
+    $("#SMsm").val("");
+    $("#SMetos").val("");
+    $("#SMtautotita").val("");
+    $("#SManot_Y").val("");
+    $("#SMkatatot_Y").val("");
+
+    $("#SMborras").val("0");
+    $("#SMnotos").val("0");
+    $("#SMdysi").val("0");
+    $("#SManatoli").val("0");
+
+    $("#SMantoistixi_Me").val("0");
+    $("#SMsyxroni_Me").val("0");
+    $("#SMkato_prin_apo").val("0");
+    $("#SMpano_meta_apo").val("0");
+    $("#SMmikos").val("0");
+    $("#SMplatos").val("0");
+    $("#SMypsos").val("0");
+    $("#SMdiametros").val("0");
+    $("#SMvathos").val("0");
+    $("#SMpaxos").val("0");
+
+    $("#SM_litho_OXI").prop( "checked", true );
+
+    $("#SM_lithos_NAI_perigrafi").val("");
+    
+    $("#SM_plinthos_OXI").prop( "checked", true );
+
+    $("#SM_syndetiko_uliko_other").val("");
+    $("#SM_epixrisma_xroma_allo").val("");
+
+    $("#SM_keramoplastikos_OXI").prop( "checked", true );
+
+    $("#SM_keramoplastikos_NAI_perigrafi").val("");
+
+    $("#SM_spollia_OXI").prop( "checked", true );
+
+    $("#SM_spollia_NAI_perigrafi").val("");
+    $("#SM_xylo_NAI_perigrafi").val("");
+    $("#SM_megethos_stoixeiwn").val("");
+    $("#SM_arithm_soz").val("0");
+    $("#SM_perigrafi_erminia").val("");
+    $("#SM_xarakt_me_sm").val("");
+    $("#SM_sxeseis_me_sm").val("");
+    $("#SM_koskino").prop( "checked", false );
+    $("#SM_nerokoskino").prop( "checked", false );
+    $("#SM_koskino_pososto").val("0");
+    $("#SM_nerokoskino_pososto").val("0");
+    $("#SM_pososotita_keramikis").val("");
+    $("#SM_hmerologio").val("");
+    $("#SM_syntaktis").val("");
+    $("#SM_hmerominia").val("");
+
+});
