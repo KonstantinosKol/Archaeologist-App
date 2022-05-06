@@ -19,19 +19,224 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+
+
+const myURL="yourURLfromDatabase";
+
+document.addEventListener("deviceready", function() {
+    $.ajax({
+        url: myURL+"/ReadSM.php",
+        dataType: 'json',
+        jsonp:"callback",
+        success: function (response) {
+        
+        var data = response["Typos_SM"];
+        // ---------------Typos SM---------
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SMtypos_Sm").append(tr_str);
+        });
+
+         // ---------------Klisi pros---------
+         data = response["Klisi_pros"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SMklisi_Pros").append(tr_str);
+        });
+
+          // ---------------Κατηγορία/Τύπος---------
+          data = response["Katigoria_typos"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SMkatigoria_typos").append(tr_str);
+        });
+
+        // ---------------Υλικό---------
+        data = response["Yliko"];
+           $.each(data, function() {
+            var tr_str = ` <label for="SM_uliko_${this.id}"><b>${this.Selections}</b></label>
+            <input type="checkbox" name="SM_uliko_${this.id}" id="SM_uliko_${this.id}">`;
+            $("#SM_uliko").append(tr_str);
+        });
+
+          // ---------------Δομή/Υφή---------
+          data = response["Domi_Yfi"];
+          $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SMdomi_yfi").append(tr_str);
+        });
+
+         // ---------------Χρώμα---------
+         data = response["Xroma"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SMxroma").append(tr_str);
+        });
+
+         // ---------------Προσμίξεις---------
+         data = response["Prosmixeis"];
+         $.each(data, function() {
+            var tr_str = `<label for="SM_prosmixeis_${this.id}"><b>${this.Selections}</b></label>
+            <input type="checkbox" name="SM_prosmixeis_${this.id}" id="SM_prosmixeis_${this.id}" >`;
+            $("#SM_prosmixeis").append(tr_str);
+        });
+
+         // ---------------Λίθος---------
+         data = response["Lithos"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_lithos_NAI_uliko").append(tr_str);
+        });
+
+         // ---------------Συνδετικό υλικό (χρώμα)---------
+         data = response["Syndetiko_Ylko"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_syndetiko_uliko").append(tr_str);
+           
+        });
+        var tr_str = `<option value="other">Άλλο</option>`;
+        $("#SM_syndetiko_uliko").append(tr_str);
+
+         // ---------------Επίχρισμα (είδος)---------
+         data = response["Epixrisma_eidos"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_epixrisma_eidos").append(tr_str);
+        });
+
+         // ---------------Επίχρισμα (χρώμα)---------
+         data = response["Epixrisma_xroma"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_epixrisma_xroma").append(tr_str);
+        });
+        var tr_str = `<option value="other">Άλλο</option>`;
+        $("#SM_epixrisma_xroma").append(tr_str);
+
+          // ---------------Τοιχοποιία---------
+          data = response["Toixopoiia"];
+          $.each(data, function() {
+            var tr_str = `<label for="SM_toixopoiia_${this.id}"><b>${this.Selections}</b></label>
+            <input type="checkbox" name="SM_toixopoiia_${this.id}" id="SM_toixopoiia_${this.id}" >`;
+            $("#SM_toixopoiia").append(tr_str);
+        });
+
+         // ---------------Δάπεδο---------
+         data = response["Dapedo"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_dapedo").append(tr_str);
+        });
+
+          // ------------Θέση------------
+          data = response["Thesi"];
+          $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_thesi").append(tr_str);
+        });
+
+         // ------------Χρονολόγιση από------------
+         data = response["Xronologisi_apo"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_xronologisi_apo").append(tr_str);
+        });
+
+         // ------------Χρονολόγιση μέχρι------------
+         data = response["Xronologisi_mexri"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_xronologisi_mexri").append(tr_str);
+        });
+
+         // ---------------Βάσει---------
+         data = response["Vasei"];
+         $.each(data, function() {
+            var tr_str = `<label for="SM_Vasei_${this.id}"><b>${this.Selections}</b></label>
+            <input type="checkbox" name="SM_Vasei_${this.id}" id="SM_Vasei_${this.id}" >`;
+            $("#SM_Vasei").append(tr_str);
+        });
+
+          // ---------------Ανασκαφ. τεχνική---------
+          data = response["Anaskaf_texn"];
+          $.each(data, function() {
+            var tr_str = `<label for="SM_anaskaf_texn_${this.id}"><b>${this.Selections}</b></label>
+            <input type="checkbox" name="SM_anaskaf_texn_${this.id}" id="SM_anaskaf_texn_${this.id}" >`;
+            $("#SM_anaskaf_texn").append(tr_str);
+        });
+
+         // ---------------Συνθήκες---------
+         data = response["Sinthikes"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_sinthikes").append(tr_str);
+        });
+
+         // ---------------Πιθανότητα επιμίξεων---------
+         data = response["Pithanotita_epim"];
+         $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SM_pithanotita").append(tr_str);
+        });
+       
+     
+
+            
+        }//====End Success    
+    });//===End AJAX
+
+    $.ajax({
+        url: myURL+"/ReadSkel.php",
+        dataType: 'json',
+        jsonp:"callback",
+        success: function (response) {
+        
+        var data = response["Typos_tafis"];
+        // ---------------Typos SM---------
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SKEL_typos_tafis").append(tr_str);
+        });
+
+         // ---------------Klisi pros---------
+         data = response["Typos_tafou"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SKEL_typos_tafou").append(tr_str);
+        });
+
+          // ---------------Κατηγορία/Τύπος---------
+          data = response["Osta"];
+        $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SKEL_osta").append(tr_str);
+        });
+
+        // ---------------Υλικό---------
+        data = response["Tafi"];
+           $.each(data, function() {
+            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+            $("#SKEL_tafi").append(tr_str);
+        }); 
+
+
+      }//====End Success    
+    });//===End AJAX
+
+  })
+
+
+
 document.querySelector("#firstScreenButton2").addEventListener("click", function(e) {
     $('#firstScreenButton1').css("color","#d7d8d7");
     $('#firstScreenButton2').css("color","#4C9292");
-    $('#secondScreenButton2').css("color","#4C9292");
-    $('#secondScreenButton1').css("color","#d7d8d7");
     document.querySelector('.containerS').classList.toggle('view-change');
 })
 
-document.querySelector("#secondScreenButton1").addEventListener("click",e=>{
-    $('#secondScreenButton2').css("color","#d7d8d7");
+document.querySelector("#firstScreenButton1").addEventListener("click",e=>{
     $('#firstScreenButton2').css("color","#d7d8d7"); 
     $('#firstScreenButton1').css("color","#4C9292");
-    $('#secondScreenButton1').css("color","#4C9292");
     document.querySelector('.containerS').classList.toggle('view-change');
 })
 
@@ -94,12 +299,16 @@ scroller.addEventListener("scroll", event => {
     } else {
       btn.removeClass('show');
     }
+    // if($('#firstScreenContent').scrollTop() + $('#firstScreenContent').height() == $(document).height()) {
+    //    btn.removeClass('show');
+    // }
 });
 
 btn.on('click', function(e) {
     e.preventDefault();
     $('#firstScreenContent').animate({scrollTop:0}, '300');
 });
+
 
 
 const scroller2 = document.querySelector("#secondScreenContent");
@@ -123,6 +332,8 @@ btn2.on('click', function(e) {
 
 $('#saveSMbutton').on('click', function(e) {
     e.preventDefault();
+
+    // -------------------------SM---------------------------
     $('#firstScreenContent').animate({scrollTop:0}, '300');
 
     $("#SMsm").val("");
@@ -178,4 +389,77 @@ $('#saveSMbutton').on('click', function(e) {
     $("#SM_syntaktis").val("");
     $("#SM_hmerominia").val("");
 
+    if (!$('#hasLithoDiv').is(':hidden'))
+    {
+        $('#hasLithoDiv').slideToggle();
+    }
+    if (!$('#hasPlinthoDiv').is(':hidden'))
+    {
+        $('#hasPlinthoDiv').slideToggle();
+    }
+    if (!$('#hasSyndetikoDiv').is(':hidden'))
+    {
+        $('#hasSyndetikoDiv').slideToggle();
+    }
+    if (!$('#hasEpixrismaDiv').is(':hidden'))
+    {
+        $('#hasEpixrismaDiv').slideToggle();
+    }
+    if (!$('#hasKeramoplastikosDiv').is(':hidden'))
+    {
+        $('#hasKeramoplastikosDiv').slideToggle();
+    }
+    if (!$('#hasSpoliaDiv').is(':hidden'))
+    {
+        $('#hasSpoliaDiv').slideToggle();
+    }
+    if (!$('#hasXiloDiv').is(':hidden'))
+    {
+        $('#hasXiloDiv').slideToggle();
+    }
+    // -------------------------Skeletos---------------------------
+
+    $("#SKEL_etos").val("0");
+    $("#SKEL_sm_kops").val("0");
+    $("#SKEL_tomeas").val("0");
+    $("#SKEL_kataskeui").val("");
+    $("#SKEL_enotita").val("");
+    $("#SKEL_synolo").val("");
+    $("#SKEL_fasi").val("");
+    $("#SKEL_tautotita").val("");
+    $("#SKEL_kato_prin_apo").val("");
+    $("#SEKL_pano_meta_apo").val("");
+    $("#SKEL_synt_vora").val("0");
+    $("#SKEL_synt_notou").val("0");
+    $("#SKEL_synt_dysis").val("0");
+    $("#SKEL_synt_anatolis").val("0");
+    $("#SKEL_anot_Y_kran").val("");
+    $("#SKEL_katot_Y_kran").val("");
+    $("#SKEL_mikos").val("0");
+    $("#SKEL_platos").val("0");
+    $("#SKEL_vathos").val("0");
+    $("#SKEL_prosanatolismos").val("");
+    $("#SKEL_geniki_stasi").val("");
+    $("#SKEL_kefali").val("");
+    $("#SKEL_kormos").val("");
+    $("#SKEL_dexi_xeri").val("");
+    $("#SKEL_aristero_xeri").val("");
+    $("#SKEL_dexi_podi").val("");
+    $("#SKEL_aristero_podi").val("");
+    $("#SKEL_perigrafi_sxolia").val("");
+    $("#SKEL_Y_skel_kata_xoran").val("");
+    $("#SKEL_mik_miriaiou_ostou").val("0");
+    $("#SKEL_syneurimata").val("");
+    $("#SKEL_anaskaf_texn").val("");
+    $("#SKEL_sinthikes").val("");
+
 });
+
+function onResize(){
+
+    if($("#bottomBar").css("display") == "grid"){
+        $("#bottomBar").css("display","none")
+    }else{
+        $("#bottomBar").css("display","grid")
+    }
+}

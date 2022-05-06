@@ -18,6 +18,7 @@
     under the License.
 -->
 <html>
+    
     <head>
         <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
@@ -28,8 +29,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>   
     </head>
-    <body>
+    <script src="cordova.js"></script> <!-- for  deviceready-->
+    <body onResize="onResize();">
+
         <div class="containerS">
+        
             <!-- ================================================FistScreen============================================================= -->
             <div id="firstScreen" class="view" >
               
@@ -50,9 +54,9 @@
 
                         <!-- -------------- Τύπος ΣΜ -------------------->
                         <label for="moderatorIDText1" style="text-align: center;"><b>Τύπος Στρ. Μονάδα</b></label>
-                        <select name="Department" id="SMtypos_Sm">
-                                <option value="Selection1.1">Selection1</option>
-                                <option value="Selection1.2">Selection2</option>
+                        <select name="SMtypos_Sm" id="SMtypos_Sm">
+                                <!-- <option value="Selection1.1">Selection1</option>
+                                <option value="Selection1.2">Selection2</option> -->
                         </select>
     
                         <!-- <label for="moderatorIDText1"><b>Τομέας</b></label>
@@ -75,8 +79,7 @@
                         <!-- -------------- Κλίση προς -------------------->
                         <label for="SMklisi_Pros" style="text-align: center;"><b>Κλίση προς</b></label>
                         <select name="SMklisi_Pros" id="SMklisi_Pros">
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
+                          
                         </select>
     
                         <!-- -------------- Ανώτ. Υ -------------------->
@@ -104,88 +107,70 @@
 
                         <!-- -------------- Αντίστοιχη με -------------------->
                         <label for="SMantoistixi_Me"><b>Αντίστοιχη με</b></label>
-                        <input type="number" name="SMantoistixi_Me" id="SMantoistixi_Me">
+                        <input type="number" name="SMantoistixi_Me" id="SMantoistixi_Me" value="0">
 
                         <!-- -------------- Σύγχρονη με -------------------->
                         <label for="SMsyxroni_Me"><b>Σύγχρονη με</b></label>
-                        <input type="number" name="SMsyxroni_Me" id="SMsyxroni_Me">
+                        <input type="number" name="SMsyxroni_Me" id="SMsyxroni_Me" value="0">
 
                         <!-- -------------- Κάτω/πριν από -------------------->
                         <label for="SMkato_prin_apo"><b>Κάτω/πριν από</b></label>
-                        <input type="number" name="SMkato_prin_apo" id="SMkato_prin_apo">
+                        <input type="number" name="SMkato_prin_apo" id="SMkato_prin_apo" value="0">
 
                         <!-- -------------- Πάνω/μετά από -------------------->
                         <label for="SMpano_meta_apo"><b>Πάνω/μετά από</b></label>
-                        <input type="number" name="SMpano_meta_apo" id="SMpano_meta_apo">
+                        <input type="number" name="SMpano_meta_apo" id="SMpano_meta_apo" value="0">
 
                          <!-- ------------ Μήκος/Πλάτος/Ύψος/Διάμετρος/Βάθος/Πάχος ---------------->
                         <div class="geoLocation">
                             <label for="SMmikos"><b>Μήκος</b></label>
-                            <input type="number" name="SMmikos" id="SMmikos">
+                            <input type="number" name="SMmikos" id="SMmikos" value="0">
 
                             <label for="SMplatos"><b>Πλάτος</b></label>
-                            <input type="number" name="SMplatos" id="SMplatos">
+                            <input type="number" name="SMplatos" id="SMplatos" value="0">
 
                             <label for="SMypsos"><b>Ύψος</b></label>
-                            <input type="number" name="SMypsos" id="SMypsos">
+                            <input type="number" name="SMypsos" id="SMypsos" value="0">
 
                             <label for="SMdiametros"><b>Διάμετρος</b></label>
-                            <input type="number" name="SMdiametros" id="SMdiametros">
+                            <input type="number" name="SMdiametros" id="SMdiametros" value="0">
 
                             <label for="SMvathos"><b>Βάθος</b></label>
-                            <input type="number" name="SMvathos" id="SMvathos">
+                            <input type="number" name="SMvathos" id="SMvathos" value="0">
 
                             <label for="SMpaxos"><b>Πάχος</b></label>
-                            <input type="number" name="SMpaxos" id="SMpaxos">
+                            <input type="number" name="SMpaxos" id="SMpaxos" value="0">
                         </div>
 
                         <!-- -------------- Κατηγορία/Τύπος -------------------->
                         <label for="SMkatigoria_typos" style="text-align: center;"><b>Κατηγορία/Τύπος</b></label>
-                        <select name="Department" id="SMkatigoria_typos">
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
+                        <select name="SMkatigoria_typos" id="SMkatigoria_typos">
+
                         </select>
 
                          <!-- -------------- Υλικό -------------------->
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Υλικό </b><i class='fas fa-minus'></i></div>
-
-                        <div class="checkBoxes">
-                            <label for="adventure_id"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="adventure_id">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
+                        <div class="checkBoxes" id="SM_uliko">
+                           
                         </div>
 
                           <!-- -------------- Δομή/Υφή -------------------->
                         <label for="SMdomi_yfi" style="text-align: center;"><b>Δομή/Υφή</b></label>
                         <select name="Department" id="SMdomi_yfi">
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
+
                         </select>
 
                          <!-- -------------- Χρώμα -------------------->
                         <label for="SMxroma" style="text-align: center;"><b>Χρώμα</b></label>
                         <select name="Department" id="SMxroma">
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
+                          
                         </select>
 
                          <!-- -------------- Πρσμίξεις -------------------->
-                        <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Πρσμίξεις </b><i class='fas fa-minus'></i></div>
+                        <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Προσμίξεις </b><i class='fas fa-minus'></i></div>
 
-                        <div class="checkBoxes">
-                            <label for="adventure_id"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="adventure_id">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
+                        <div class="checkBoxes" id="SM_prosmixeis">
+                          
                         </div>
 
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Υλικά/τεχνική κατασκευής </b><i class='fas fa-minus'></i></div>
@@ -205,8 +190,7 @@
 
                             <label for="SM_lithos_NAI_uliko" style="text-align: center;"><b>Επιλέξτε ένα υλικό</b></label>
                             <select name="SM_lithos_NAI_uliko" id="SM_lithos_NAI_uliko">
-                                <option value="Selection1.1">Selection1</option>
-                                <option value="Selection1.2">Selection2</option>
+                             
                             </select>
 
                             <label for="SM_lithos_NAI_perigrafi"><b>Περιγραφη</b></label>
@@ -232,9 +216,7 @@
                          <!-- -------------- Συνδετικό υλικό (χρώμα) -------------------->
                         <label for="SM_syndetiko_uliko" style="text-align: center;"><b>Συνδετικό υλικό (χρώμα)</b></label>
                         <select name="SM_syndetiko_uliko" id="SM_syndetiko_uliko" onchange="otherColor()">
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="other" >Άλλο</option>
+                            
                         </select>
 
 
@@ -249,26 +231,23 @@
                         
                         <div class="checkBoxes">
                             <div>
-                                <label for="SM_epixrisma_eidos" ><b>είδος</b></label>
+                                <label for="SM_epixrisma_eidos" ><b>Είδος</b></label>
                                 <select name="SM_epixrisma_eidos" id="SM_epixrisma_eidos" >
-                                    <option value="Selection1.1">Selection1</option>
-                                    <option value="Selection1.2">Selection2</option>
+                                   
                                 </select>
                             </div>
 
                             <div>
-                                <label for="SM_epixrisma_xroma" ><b>χρώμα</b></label>
+                                <label for="SM_epixrisma_xroma" ><b>Χρώμα</b></label>
                                 <select name="SM_epixrisma_xroma" id="SM_epixrisma_xroma" onchange="otherEpixrisma()">
-                                    <option value="Selection1.1">Selection1</option>
-                                    <option value="Selection1.2">Selection2</option>
-                                    <option value="other" >Άλλο</option>
+                                  
                                 </select>
                             </div>
                         </div>
                         
                         <div id="hasEpixrismaDiv" style="display:none">
 
-                            <label for="SM_epixrisma_xroma_allo"><b>Άλλο Συνδετικό υλικό (χρώμα)</b></label>
+                            <label for="SM_epixrisma_xroma_allo"><b>Άλλο Επίχρισμα (χρώμα)</b></label>
                             <input type="text" name="SM_epixrisma_xroma_allo" id="SM_epixrisma_xroma_allo">
                         </div>
 
@@ -326,35 +305,24 @@
                           <!-- -------------- Τοιχοποιία -------------------->
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Τοιχοποιία </b><i class='fas fa-minus'></i></div>
 
-                        <div class="checkBoxes">
-                            <label for="adventure_id"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="adventure_id">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
+                        <div class="checkBoxes" id="SM_toixopoiia">
+                           
                         </div>
 
                         <!-- -------------- Αριθμ. σωζ. δομών -------------------->
                         <label for="SM_arithm_soz"><b>Αριθμ. σωζ. δομών</b></label>
-                        <input type="number" name="SM_arithm_soz" id="SM_arithm_soz">
+                        <input type="number" name="SM_arithm_soz" id="SM_arithm_soz" value="0"> 
 
                         <!-- -------------- Δάπεδο -------------------->
                         <label for="SM_dapedo" style="text-align: center;"><b>Δάπεδο</b></label>
                         <select name="SM_dapedo" id="SM_dapedo" >
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="otherColor" >Άλλο</option>
+
                         </select>
 
                         <!-- -------------- Θέση -------------------->
                         <label for="SM_thesi" style="text-align: center;"><b>Θέση</b></label>
                         <select name="SM_thesi" id="SM_thesi" >
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="otherColor" >Άλλο</option>
+                         
                         </select>
 
                          <!-- -------------- Περιγραφή/ερμηνεία -------------------->
@@ -372,61 +340,39 @@
                         <!-- -------------- Χρονολόγιση από -------------------->
                         <label for="SM_xronologisi_apo" style="text-align: center;"><b>Χρονολόγιση από</b></label>
                         <select name="SM_xronologisi_apo" id="SM_xronologisi_apo" >
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="otherColor" >Άλλο</option>
+                          
                         </select>
 
                          <!-- -------------- Χρονολόγιση μέχρι -------------------->
-                         <label for="SM_xronologisi_mexri" style="text-align: center;"><b>Χρονολόγιση μέχρ</b></label>
+                         <label for="SM_xronologisi_mexri" style="text-align: center;"><b>Χρονολόγιση μέχρι</b></label>
                          <select name="SM_xronologisi_mexri" id="SM_xronologisi_mexri" >
-                             <option value="Selection1.1">Selection1</option>
-                             <option value="Selection1.2">Selection2</option>
-                             <option value="otherColor" >Άλλο</option>
+                           
                          </select>
 
                          <!-- -------------- Βάσει -------------------->
                          <div class="smallTitle"><i class='fas fa-minus'></i><b> Βάσει </b><i class='fas fa-minus'></i></div>
                          
-                         <div class="checkBoxes">
-                             <label for=""><b>Μήκος</b></label>
-                             <input type="checkbox" name="moderatorIDText1" id="adventure_id">
- 
-                             <label for="moderatorIDText1"><b>Μήκος</b></label>
-                             <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
- 
-                             <label for="moderatorIDText1"><b>Μήκος</b></label>
-                             <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
+                         <div class="checkBoxes" id="SM_Vasei">
+                           
                          </div>
 
                         <!-- -------------- Ανασκαφ. τεχνική -------------------->
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Ανασκαφ. τεχνική </b><i class='fas fa-minus'></i></div>
 
-                        <div class="checkBoxes">
-                            <label for=""><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="adventure_id">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
-
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="checkbox" name="moderatorIDText1" id="moderatorIDText1">
+                        <div class="checkBoxes" id="SM_anaskaf_texn">
+                          
                         </div>
 
                         <!-- -------------- Συνθήκες -------------------->
                          <label for="SM_sinthikes" style="text-align: center;"><b>Συνθήκες</b></label>
                          <select name="SM_sinthikes" id="SM_sinthikes" >
-                             <option value="Selection1.1">Selection1</option>
-                             <option value="Selection1.2">Selection2</option>
-                             <option value="otherColor" >Άλλο</option>
+
                          </select>
 
                         <!-- -------------- Πιθανότητα επιμίξεων -------------------->
                         <label for="SM_pithanotita" style="text-align: center;"><b>Πιθανότητα επιμίξεων</b></label>
                         <select name="SM_pithanotita" id="SM_pithanotita" >
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="otherColor" >Άλλο</option>
+                           
                         </select>
 
                          <!-- -------------- Κόσκινο + Νεροκόσκινο -------------------->
@@ -441,10 +387,10 @@
                         <!-- -------------- Κόσκινο Ποσοστό + Νεροκόσκινο Ποσοστό-------------------->
                         <div class="geoLocation">
                             <label for="SM_koskino_pososto"><b>Κόσκινο Ποσοστό (%)</b></label>
-                            <input type="number" name="SM_koskino_pososto" id="SM_koskino_pososto">
+                            <input type="number" name="SM_koskino_pososto" id="SM_koskino_pososto" value="0">
 
                             <label for="SM_nerokoskino_pososto"><b>Νεροκόσκινο Ποσοστό (%)</b></label>
-                            <input type="number" name="SM_nerokoskino_pososto" id="SM_nerokoskino_pososto">
+                            <input type="number" name="SM_nerokoskino_pososto" id="SM_nerokoskino_pososto" value="0">
                         </div>
 
                         <!-- -------------- Ποσότητα κεραμικής (τελαρα/σακούλες) -------------------->
@@ -453,7 +399,7 @@
 
                          <!-- -------------- Ημερολόγιο (σελ.) -------------------->
                          <label for="SM_hmerologio"><b>Ημερολόγιο (σελ.)</b></label>
-                         <input type="number" name="SM_hmerologio" id="SM_hmerologio">
+                         <input type="number" name="SM_hmerologio" id="SM_hmerologio" value="0">
 
                         <!-- -------------- Συντάκτης -------------------->
                         <label for="SM_syntaktis"><b>Συντάκτης</b></label>
@@ -471,11 +417,6 @@
                     
                 <button id="goUpButton"><i class='far fa-caret-square-up'></i></button>
 
-                <div id="bottomBar">
-                    <div id="firstScreenButton1"><i class='fas fa-layer-group'></i><p>Στρ. Μονάδα</p></div>
-                    <div id="firstScreenButton2"><i class='fas fa-skull-crossbones'></i><p>Σκελετός</p></div>
-                </div>
-                    
             </div>
 
             <!-- =============================================SecondScreen=================================================== -->
@@ -493,180 +434,160 @@
                     <div id="secondScreenContentSections">
 
                         <!-- -------------- Έτος -------------------->
-                        <label for="moderatorIDText1"><b>Έτος</b></label>
-                        <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_etos"><b>Έτος</b></label>
+                        <input type="number" name="SKEL_etos" id="SKEL_etos" value="0">
 
                         <!-- -------------- ΣΜ κοψίματος -------------------->
-                        <label for="moderatorIDText1"><b>ΣΜ κοψίματος</b></label>
-                        <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_sm_kops"><b>ΣΜ κοψίματος</b></label>
+                        <input type="number" name="SKEL_sm_kops" id="SKEL_sm_kops" value="0">
 
                         <!-- -------------- Τομέας -------------------->
-                        <label for="moderatorIDText1"><b>Τομέας</b></label>
-                        <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_tomeas"><b>Τομέας</b></label>
+                        <input type="number" name="SKEL_tomeas" id="SKEL_tomeas" value="0">
 
                          <!-- -------------- Κατασκευή -------------------->
-                         <label for="moderatorIDText1"><b>Τομέας</b></label>
-                         <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                         <label for="SKEL_kataskeui"><b>Κατασκευή</b></label>
+                         <input type="text" name="SKEL_kataskeui" id="SKEL_kataskeui">
 
                         <!-- -------------- Ενότητα -------------------->
-                        <label for="moderatorIDText1"><b>Ενότητα</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_enotita"><b>Ενότητα</b></label>
+                        <input type="text" name="SKEL_enotita" id="SKEL_enotita">
 
                         <!-- -------------- Σύνολο -------------------->
-                        <label for="moderatorIDText1"><b>Σύνολο</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_synolo"><b>Σύνολο</b></label>
+                        <input type="text" name="SKEL_synolo" id="SKEL_synolo">
 
                         <!-- -------------- Φάση -------------------->
-                        <label for="moderatorIDText1"><b>Φάση</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_fasi"><b>Φάση</b></label>
+                        <input type="text" name="SKEL_fasi" id="SKEL_fasi">
 
                         <!-- -------------- Ταυτότητα -------------------->
-                        <label for="moderatorIDText1"><b>Ταυτότητα</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_tautotita"><b>Ταυτότητα</b></label>
+                        <input type="text" name="SKEL_tautotita" id="SKEL_tautotita">
 
                         <!-- -------------- Κάτω/πριν από -------------------->
-                        <label for="moderatorIDText1"><b>Κάτω/πριν από</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_kato_prin_apo"><b>Κάτω/πριν από</b></label>
+                        <input type="text" name="SKEL_kato_prin_apo" id="SKEL_kato_prin_apo">
 
                         <!-- -------------- Πάνω/μετά από -------------------->
-                        <label for="moderatorIDText1"><b>Πάνω/μετά από</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SEKL_pano_meta_apo"><b>Πάνω/μετά από</b></label>
+                        <input type="text" name="SEKL_pano_meta_apo" id="SEKL_pano_meta_apo">
 
                         <!-- -------------- Τύπος ταφής -------------------->
-                        <label for="moderatorIDText1" style="text-align: center;"><b>Τύπος ταφής</b></label>
-                        <select name="Department" id="" >
-                            <option value="Selection1.1">Selection1</option>
-                            <option value="Selection1.2">Selection2</option>
-                            <option value="otherColor" >Άλλο</option>
+                        <label for="SKEL_typos_tafis" style="text-align: center;"><b>Τύπος ταφής</b></label>
+                        <select name="SKEL_typos_tafis" id="SKEL_typos_tafis" >
+
                         </select>
 
                          <!-- -------------- Τύπος τάφου -------------------->
-                         <label for="moderatorIDText1" style="text-align: center;"><b>Τύπος τάφου</b></label>
-                         <select name="Department" id="" >
-                             <option value="Selection1.1">Selection1</option>
-                             <option value="Selection1.2">Selection2</option>
-                             <option value="otherColor" >Άλλο</option>
+                         <label for="SKEL_typos_tafou" style="text-align: center;"><b>Τύπος τάφου</b></label>
+                         <select name="SKEL_typos_tafou" id="SKEL_typos_tafou" >
+ 
                          </select>
 
                          <div class="geoLocation">
-                            <label for="moderatorIDText1"><b>Συντ. Βορρά</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_synt_vora"><b>Συντ. Βορρά</b></label>
+                            <input type="number" name="SKEL_synt_vora" id="SKEL_synt_vora" value="0">
 
-                            <label for="moderatorIDText1"><b>Συντ. Νότου</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_synt_notou"><b>Συντ. Νότου</b></label>
+                            <input type="number" name="SKEL_synt_notou" id="SKEL_synt_notou" value="0">
 
-                            <label for="moderatorIDText1"><b>Συντ. Δύσης</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_synt_dysis"><b>Συντ. Δύσης</b></label>
+                            <input type="number" name="SKEL_synt_dysis" id="SKEL_synt_dysis" value="0">
 
-                            <label for="moderatorIDText1"><b>Συντ. Ανατολής</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_synt_anatolis"><b>Συντ. Ανατολής</b></label>
+                            <input type="number" name="SKEL_synt_anatolis" id="SKEL_synt_anatolis" value="0">
                         </div>
 
                         <!-- -------------- Ανωτ. Υ. κραν. -------------------->
-                        <label for="moderatorIDText1"><b>Ανωτ. Υ. κραν.</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_anot_Y_kran"><b>Ανωτ. Υ. κραν.</b></label>
+                        <input type="text" name="SKEL_anot_Y_kran" id="SKEL_anot_Y_kran">
 
                         <!-- -------------- Κατωτ. Υ. κραν. -------------------->
-                        <label for="moderatorIDText1"><b>Κατωτ. Υ. κραν.</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_katot_Y_kran"><b>Κατωτ. Υ. κραν.</b></label>
+                        <input type="text" name="SKEL_katot_Y_kran" id="SKEL_katot_Y_kran">
 
                          <!-- --------------Μήκος/Πλάτος/Βάθος-------------------->
                         <div class="checkBoxes">
 
-                            <label for="moderatorIDText1"><b>Μήκος</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_mikos"><b>Μήκος</b></label>
+                            <input type="number" name="SKEL_mikos" id="SKEL_mikos" value="0">
 
-                            <label for="moderatorIDText1"><b>Πλάτος</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_platos"><b>Πλάτος</b></label>
+                            <input type="number" name="SKEL_platos" id="SKEL_platos" value="0">
 
-                            <label for="moderatorIDText1"><b>Βάθος</b></label>
-                            <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                            <label for="SKEL_vathos"><b>Βάθος</b></label>
+                            <input type="number" name="SKEL_vathos" id="SKEL_vathos" value="0">
 
                         </div>
 
-                         <!-- --------------Οστά/Ταφή-------------------->
-                        <div class="checkBoxes">
-                            <div>
-                                <label for="moderatorIDText1" style="text-align:center"><b>Οστά</b></label>
-                                <select name="Department" id="Epihrsima1" >
-                                    <option value="Selection1.1">Selection1</option>
-                                    <option value="Selection1.2">Selection2</option>
-                                </select>
-                            </div>
+                         <!-- --------------Οστά-------------------->
+                         <label for="SKEL_osta" style="text-align:center"><b>Οστά</b></label>
+                         <select name="SKEL_osta" id="SKEL_osta" >
+                            
+                         </select>
 
-                            <div>
-                                <label for="moderatorIDText1" style="text-align:center"><b>Ταφή</b></label>
-                                <select name="Department" id="Epihrsima2" onchange="otherEpixrisma()">
-                                    <option value="Selection1.1">Selection1</option>
-                                    <option value="Selection1.2">Selection2</option>
-                                    <option value="otherColor" >Άλλο</option>
-                                </select>
-                            </div>
-                        </div>
-
+                       <!-- --------------Ταφή-------------------->
+                        <label for="SKEL_tafi" style="text-align:center"><b>Ταφή</b></label>
+                        <select name="SKEL_tafi" id="SKEL_tafi" onchange="otherEpixrisma()">
+                            
+                        </select>
+                        
                         <!-- -------------- Προσανατολισμός-------------------->
-                        <label for="moderatorIDText1"><b>Προσανατολισμός</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
-
-                        <!-- -------------- Κάτω/πριν από-------------------->
-                        <label for="moderatorIDText1"><b>Κάτω/πριν από</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
-
-                        <!-- -------------- Πάνω/μετά από-------------------->
-                        <label for="moderatorIDText1"><b>Κάτω/πριν από</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_prosanatolismos"><b>Προσανατολισμός</b></label>
+                        <input type="text" name="SKEL_prosanatolismos" id="SKEL_prosanatolismos">
 
                         <!-- -------------- Γενική στάση σώματος-------------------->
-                        <label for="moderatorIDText1"><b>Γενική στάση σώματος</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_geniki_stasi"><b>Γενική στάση σώματος</b></label>
+                        <input type="text" name="SKEL_geniki_stasi" id="SKEL_geniki_stasi">
 
                         <!-- -------------- Κεφάλι-------------------->
-                        <label for="moderatorIDText1"><b>Κεφάλι</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_kefali"><b>Κεφάλι</b></label>
+                        <input type="text" name="SKEL_kefali" id="SKEL_kefali">
 
                         <!-- -------------- Κορμός-------------------->
-                        <label for="moderatorIDText1"><b>Κορμός</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_kormos"><b>Κορμός</b></label>
+                        <input type="text" name="SKEL_kormos" id="SKEL_kormos">
 
                         <!-- -------------- Δεξί χέρι-------------------->
-                        <label for="moderatorIDText1"><b>Δεξί χέρι</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_dexi_xeri"><b>Δεξί χέρι</b></label>
+                        <input type="text" name="SKEL_dexi_xeri" id="SKEL_dexi_xeri">
 
                         <!-- -------------- Αριστερό χέρι-------------------->
-                        <label for="moderatorIDText1"><b>Αριστερό χέρι</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_aristero_xeri"><b>Αριστερό χέρι</b></label>
+                        <input type="text" name="SKEL_aristero_xeri" id="SKEL_aristero_xeri">
 
                         <!-- -------------- Δεξί πόδι-------------------->
-                        <label for="moderatorIDText1"><b>Δεξί πόδι</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_dexi_podi"><b>Δεξί πόδι</b></label>
+                        <input type="text" name="SKEL_dexi_podi" id="SKEL_dexi_podi">
 
                         <!-- -------------- Αριστερό πόδι-------------------->
-                        <label for="moderatorIDText1"><b>Αριστερό πόδι</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_aristero_podi"><b>Αριστερό πόδι</b></label>
+                        <input type="text" name="SKEL_aristero_podi" id="SKEL_aristero_podi">
 
                         <!-- -------------- Περιγραφή/σχόλια -------------------->
-                        <label for="moderatorIDText1"><b>Περιγραφή/σχόλια</b></label>
-                        <input type="textarea" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_perigrafi_sxolia"><b>Περιγραφή/σχόλια</b></label>
+                        <input type="textarea" name="SKEL_perigrafi_sxolia" id="SKEL_perigrafi_sxolia">
 
                         <!-- -------------- Y. σκελετού κατά χώραν -------------------->
-                        <label for="moderatorIDText1"><b>Y. σκελετού κατά χώραν</b></label>
-                        <input type="textarea" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_Y_skel_kata_xoran"><b>Y. σκελετού κατά χώραν</b></label>
+                        <input type="textarea" name="SKEL_Y_skel_kata_xoran" id="SKEL_Y_skel_kata_xoran">
 
                         <!-- -------------- Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού) -------------------->
-                        <label for="moderatorIDText1"><b>Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού)</b></label>
-                        <input type="number" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_mik_miriaiou_ostou"><b>Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού)</b></label>
+                        <input type="number" name="SKEL_mik_miriaiou_ostou" id="SKEL_mik_miriaiou_ostou" value="0">
 
                         <!-- -------------- Συνευρήματα (με Α/Α) -------------------->
-                        <label for="moderatorIDText1"><b>Συνευρήματα (με Α/Α)</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_syneurimata"><b>Συνευρήματα (με Α/Α)</b></label>
+                        <input type="text" name="SKEL_syneurimata" id="SKEL_syneurimata">
 
                         <!-- -------------- Ανασκ. τεχνική -------------------->
-                        <label for="moderatorIDText1"><b>Ανασκ. τεχνική</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1">
+                        <label for="SKEL_anaskaf_texn"><b>Ανασκ. τεχνική</b></label>
+                        <input type="text" name="SKEL_anaskaf_texn" id="SKEL_anaskaf_texn">
 
                         <!-- -------------- Συνθήκες -------------------->
-                        <label for="moderatorIDText1"><b>Συνθήκες</b></label>
-                        <input type="text" name="moderatorIDText1" id="moderatorIDText1" style="margin-bottom: 17%;">
+                        <label for="SKEL_sinthikes"><b>Συνθήκες</b></label>
+                        <input type="text" name="SKEL_sinthikes" id="SKEL_sinthikes" style="margin-bottom: 22%;">
    
                     </div>
 
@@ -674,11 +595,16 @@
 
                 <button id="goUpButton2"><i class='far fa-caret-square-up'></i></button>
 
-                <div id="bottomBar">
+                <!-- <div id="bottomBar">
                     <div id="secondScreenButton1"><i class='fas fa-layer-group'></i><p>Στρ. Μονάδα</p></div>
                     <div id="secondScreenButton2"><i class='fas fa-skull-crossbones'></i><p>Σκελετός</p></div>
-                </div>
+                </div> -->
 
+            </div>
+
+            <div id="bottomBar">
+                <div id="firstScreenButton1"><i class='fas fa-layer-group'></i><p>Στρ. Μονάδα</p></div>
+                <div id="firstScreenButton2"><i class='fas fa-skull-crossbones'></i><p>Σκελετός</p></div>
             </div>
 
         </div>
