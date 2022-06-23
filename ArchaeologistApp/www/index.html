@@ -26,6 +26,12 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/index.css">
+
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
+
+
+        <!-- <script src="node_modules/axios/dist/axios.min.js"></script> -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>   
     </head>
@@ -33,27 +39,42 @@
     <body onResize="onResize();">
 
         <div class="containerS">
+             <!-- ================================================Menu============================================================= -->
+             <div id="mainMenu" class="view" >
+              
+                <div class="mainMenuContent">
+                    <p class="title" > Εφαρμογή διαχείρισης αρχαιολογικών δεδομένων </p>
+
+                    <button id="add_SM_ButtonInMenu" >Προσθήκη <i class='fas fa-plus'></i></button>
+                   
+                    <button id="searchButtonInMenu" >Αναζήτηση <i class="fa fa-search"></i></button>
+                    
+                    <div id="welcomeMessage">Αποθήκευσε ευρήματα από όπου θέλεις, όποτε θέλεις</div>
+                </div>
+                <svg id="wave1" viewBox="0 0 600 100" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(29, 129, 113, 1)" offset="0%"></stop><stop stop-color="rgba(243, 106, 62, 1)" offset="100%"></stop></linearGradient></defs><path  style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,228L60,247C120,266,240,304,360,272.3C480,241,600,139,720,88.7C840,38,960,38,1080,44.3C1200,51,1320,63,1440,114C1560,165,1680,253,1800,240.7C1920,228,2040,114,2160,114C2280,114,2400,228,2520,266C2640,304,2760,266,2880,209C3000,152,3120,76,3240,88.7C3360,101,3480,203,3600,215.3C3720,228,3840,152,3960,139.3C4080,127,4200,177,4320,164.7C4440,152,4560,76,4680,82.3C4800,89,4920,177,5040,177.3C5160,177,5280,89,5400,63.3C5520,38,5640,76,5760,133C5880,190,6000,266,6120,247C6240,228,6360,114,6480,82.3C6600,51,6720,101,6840,120.3C6960,139,7080,127,7200,107.7C7320,89,7440,63,7560,95C7680,127,7800,215,7920,209C8040,203,8160,101,8280,88.7C8400,76,8520,152,8580,190L8640,228L8640,380L8580,380C8520,380,8400,380,8280,380C8160,380,8040,380,7920,380C7800,380,7680,380,7560,380C7440,380,7320,380,7200,380C7080,380,6960,380,6840,380C6720,380,6600,380,6480,380C6360,380,6240,380,6120,380C6000,380,5880,380,5760,380C5640,380,5520,380,5400,380C5280,380,5160,380,5040,380C4920,380,4800,380,4680,380C4560,380,4440,380,4320,380C4200,380,4080,380,3960,380C3840,380,3720,380,3600,380C3480,380,3360,380,3240,380C3120,380,3000,380,2880,380C2760,380,2640,380,2520,380C2400,380,2280,380,2160,380C2040,380,1920,380,1800,380C1680,380,1560,380,1440,380C1320,380,1200,380,1080,380C960,380,840,380,720,380C600,380,480,380,360,380C240,380,120,380,60,380L0,380Z"></path></svg>
+                <svg id="wave2" viewBox="0 0 600 100" style="transform:rotate(180deg); transition: 0.3s; "  xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(243, 106, 62, 1)" offset="0%"></stop><stop stop-color="rgba(29, 129, 113, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,228L60,247C120,266,240,304,360,272.3C480,241,600,139,720,88.7C840,38,960,38,1080,44.3C1200,51,1320,63,1440,114C1560,165,1680,253,1800,240.7C1920,228,2040,114,2160,114C2280,114,2400,228,2520,266C2640,304,2760,266,2880,209C3000,152,3120,76,3240,88.7C3360,101,3480,203,3600,215.3C3720,228,3840,152,3960,139.3C4080,127,4200,177,4320,164.7C4440,152,4560,76,4680,82.3C4800,89,4920,177,5040,177.3C5160,177,5280,89,5400,63.3C5520,38,5640,76,5760,133C5880,190,6000,266,6120,247C6240,228,6360,114,6480,82.3C6600,51,6720,101,6840,120.3C6960,139,7080,127,7200,107.7C7320,89,7440,63,7560,95C7680,127,7800,215,7920,209C8040,203,8160,101,8280,88.7C8400,76,8520,152,8580,190L8640,228L8640,380L8580,380C8520,380,8400,380,8280,380C8160,380,8040,380,7920,380C7800,380,7680,380,7560,380C7440,380,7320,380,7200,380C7080,380,6960,380,6840,380C6720,380,6600,380,6480,380C6360,380,6240,380,6120,380C6000,380,5880,380,5760,380C5640,380,5520,380,5400,380C5280,380,5160,380,5040,380C4920,380,4800,380,4680,380C4560,380,4440,380,4320,380C4200,380,4080,380,3960,380C3840,380,3720,380,3600,380C3480,380,3360,380,3240,380C3120,380,3000,380,2880,380C2760,380,2640,380,2520,380C2400,380,2280,380,2160,380C2040,380,1920,380,1800,380C1680,380,1560,380,1440,380C1320,380,1200,380,1080,380C960,380,840,380,720,380C600,380,480,380,360,380C240,380,120,380,60,380L0,380Z"></path></svg>
+         <svg id="sw-js-blob-svg" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg" version="1.1">                    <defs>                         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">                            <stop id="stop1" stop-color="rgba(29, 129, 113, 1)" offset="0%"></stop>                            <stop id="stop2" stop-color="rgba(243, 106, 62, 1)" offset="100%"></stop>                        </linearGradient>                    </defs>                <path fill="url(#sw-gradient)" d="M19.1,-21.9C25.6,-17.3,32.2,-12.1,33.6,-5.7C34.9,0.6,30.9,8.1,27.1,16.7C23.4,25.4,19.9,35.4,13.7,37.6C7.5,39.8,-1.5,34.4,-10.4,30.4C-19.3,26.4,-28,23.8,-32.5,17.8C-37.1,11.9,-37.4,2.6,-35.9,-6.4C-34.3,-15.3,-30.8,-24,-24.5,-28.6C-18.2,-33.3,-9.1,-34,-1.4,-32.3C6.3,-30.6,12.6,-26.5,19.1,-21.9Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;" stroke="url(#sw-gradient)"></path>              </svg>             </div>    
         
             <!-- ================================================FistScreen============================================================= -->
-            <div id="firstScreen" class="view" >
+            <div id="firstScreen" class="firstScreen view" >
               
                 <div id="firstScreenContent">
 
                     <div id="DepartmentTitle">
                         Τμήμα Ιστορίας, Αρχαιολογίας και Διαχείρισης 
-                        <div id="templeIcon"><i class="fa fa-university"></i></div> Πολιτισμικών Αγαθών 
+                        <div id="templeIcon"><i class="fas fa-university"></i></div> Πολιτισμικών Αγαθών 
                     </div>
 
-                    <p id="SMtitle">Στρωματολογική Μονάδα</p>
+                    <p id="SMtitle">Στρωματογραφική Μονάδα</p>
                     
                     <div id="firstScreenContentSections">
 
                         <!-- -------------- ΣΜ -------------------->
                         <label for="SMsm"><b>ΣΜ</b></label>
-                        <input type="text" name="SMsm" id="SMsm">
+                        <input type="number" name="SMsm" id="SMsm" value="0"><!-- -->
 
                         <!-- -------------- Τύπος ΣΜ -------------------->
-                        <label for="moderatorIDText1" style="text-align: center;"><b>Τύπος Στρ. Μονάδα</b></label>
+                        <label for="moderatorIDText1" style="text-align: center;"><b>Τύπος Στρ. Μονάδα</b></label><!-- -->
                         <select name="SMtypos_Sm" id="SMtypos_Sm">
                                 <!-- <option value="Selection1.1">Selection1</option>
                                 <option value="Selection1.2">Selection2</option> -->
@@ -70,7 +91,7 @@
     
                         <!-- -------------- Έτος -------------------->
                         <label for="SMetos"><b>Έτος</b></label>
-                        <input type="text" name="SMetos" id="SMetos">
+                        <input type="number" name="SMetos" id="SMetos" value="0">   <!-- --> <!-- Hmerominia -->
 
                         <!-- -------------- Ταυτότητα -------------------->
                         <label for="SMtautotita"><b>Ταυτότητα</b></label>
@@ -91,35 +112,39 @@
                         <input type="text" name="SMkatatot_Y" id="SMkatatot_Y">
 
                         <!-- -------------- Β/Ν/Α/Δ -------------------->
-                        <div class="geoLocation">
-                            <label for="SMborras"><b>Συντ. Βορρά</b></label>
-                            <input type="number" name="SMborras" id="SMborras" value="0">
-
-                            <label for="SMnotos"><b>Συντ. Νότου</b></label>
-                            <input type="number" name="SMnotos" id="SMnotos" value="0">
-
-                            <label for="SMdysi"><b>Συντ. Δύσης</b></label>
-                            <input type="number" name="SMdysi" id="SMdysi" value="0">
-
-                            <label for="SManatoli"><b>Συντ. Ανατολής</b></label>
-                            <input type="number" name="SManatoli" id="SManatoli" value="0">
+                        <div id="SM_Sydetagmenes" class="sections" data-id="closed">Συντεταγμένες <i class='fas fa-caret-up' style="text-align: right;"></i></div>
+                        <div id="SM_Sydetagmenes_div"  style="display:none" >
+                            <div class="geoLocation" >
+                                <label for="SMborras"><b>Συντ. Βορρά</b></label>
+                                <input type="number" name="SMborras" id="SMborras" value="0">
+    
+                                <label for="SMnotos"><b>Συντ. Νότου</b></label>
+                                <input type="number" name="SMnotos" id="SMnotos" value="0">
+    
+                                <label for="SMdysi"><b>Συντ. Δύσης</b></label>
+                                <input type="number" name="SMdysi" id="SMdysi" value="0">
+    
+                                <label for="SManatoli"><b>Συντ. Ανατολής</b></label>
+                                <input type="number" name="SManatoli" id="SManatoli" value="0">
+                            </div>
                         </div>
+                      
 
                         <!-- -------------- Αντίστοιχη με -------------------->
                         <label for="SMantoistixi_Me"><b>Αντίστοιχη με</b></label>
-                        <input type="number" name="SMantoistixi_Me" id="SMantoistixi_Me" value="0">
+                        <input type="text" name="SMantoistixi_Me" id="SMantoistixi_Me" value="0">
 
                         <!-- -------------- Σύγχρονη με -------------------->
                         <label for="SMsyxroni_Me"><b>Σύγχρονη με</b></label>
-                        <input type="number" name="SMsyxroni_Me" id="SMsyxroni_Me" value="0">
+                        <input type="text" name="SMsyxroni_Me" id="SMsyxroni_Me" value="0">
 
                         <!-- -------------- Κάτω/πριν από -------------------->
                         <label for="SMkato_prin_apo"><b>Κάτω/πριν από</b></label>
-                        <input type="number" name="SMkato_prin_apo" id="SMkato_prin_apo" value="0">
+                        <input type="text" name="SMkato_prin_apo" id="SMkato_prin_apo" value="0">
 
                         <!-- -------------- Πάνω/μετά από -------------------->
                         <label for="SMpano_meta_apo"><b>Πάνω/μετά από</b></label>
-                        <input type="number" name="SMpano_meta_apo" id="SMpano_meta_apo" value="0">
+                        <input type="text" name="SMpano_meta_apo" id="SMpano_meta_apo" value="0">
 
                          <!-- ------------ Μήκος/Πλάτος/Ύψος/Διάμετρος/Βάθος/Πάχος ---------------->
                         <div class="geoLocation">
@@ -156,174 +181,175 @@
 
                           <!-- -------------- Δομή/Υφή -------------------->
                         <label for="SMdomi_yfi" style="text-align: center;"><b>Δομή/Υφή</b></label>
-                        <select name="Department" id="SMdomi_yfi">
+                        <select name="SMdomi_yfi" id="SMdomi_yfi">
 
                         </select>
 
                          <!-- -------------- Χρώμα -------------------->
                         <label for="SMxroma" style="text-align: center;"><b>Χρώμα</b></label>
-                        <select name="Department" id="SMxroma">
+                        <select name="SMxroma" id="SMxroma">
                           
                         </select>
 
                          <!-- -------------- Πρσμίξεις -------------------->
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Προσμίξεις </b><i class='fas fa-minus'></i></div>
-
                         <div class="checkBoxes" id="SM_prosmixeis">
                           
                         </div>
 
-                        <div class="smallTitle"><i class='fas fa-minus'></i><b> Υλικά/τεχνική κατασκευής </b><i class='fas fa-minus'></i></div>
+                        <!-- <div class="smallTitle"><i class='fas fa-minus'></i><b> Υλικά/τεχνική κατασκευής </b><i class='fas fa-minus'></i></div> -->
 
-                         <!-- -------------- Λίθος -------------------->
-                        <label ><b>Περιέχει Λίθο;</b></label>
-                        <div class="radioButtons">
-                            <label for="SM_litho_NAI"><b>Ναι</b></label>
-                            <input type="radio" name="SM_litho" id="SM_litho_NAI" onchange="checkLithos();" >
-    
-                            <label for="SM_litho_OXI"><b>Όχι</b></label>
-                            <input type="radio" name="SM_litho" id="SM_litho_OXI" onchange="checkLithos();" checked>
-                        </div>
+                        <div id="SM_Ylika_texniki" class="sections" data-id="closed">Υλικά/τεχνική κατασκευής <i class='fas fa-caret-up' style="text-align: right;"></i></div>
+                        <div id="SM_Ylika_texniki_div" style="display:none">
+                            <!-- -------------- Λίθος -------------------->
+                            <label ><b>Περιέχει Λίθο;</b></label>
+                            <div class="radioButtons">
+                                <label for="SM_litho_NAI"><b>Ναι</b></label>
+                                <input type="radio" name="SM_litho" id="SM_litho_NAI" onchange="checkLithos();" >
+
+                                <label for="SM_litho_OXI"><b>Όχι</b></label>
+                                <input type="radio" name="SM_litho" id="SM_litho_OXI" onchange="checkLithos();" checked>
+                            </div>
 
 
-                        <div id="hasLithoDiv" style="display:none">
+                            <div id="hasLithoDiv" style="display:none">
 
-                            <label for="SM_lithos_NAI_uliko" style="text-align: center;"><b>Επιλέξτε ένα υλικό</b></label>
-                            <select name="SM_lithos_NAI_uliko" id="SM_lithos_NAI_uliko">
-                             
+                                <label for="SM_lithos_NAI_uliko" style="text-align: center;"><b>Επιλέξτε ένα υλικό</b></label>
+                                <select name="SM_lithos_NAI_uliko" id="SM_lithos_NAI_uliko">
+                                
+                                </select>
+
+                                <label for="SM_lithos_NAI_perigrafi"><b>Περιγραφη</b></label>
+                                <textarea name="SM_lithos_NAI_perigrafi" id="SM_lithos_NAI_perigrafi"></textarea>
+                            </div>
+
+                            <!-- -------------- Πλίνθο -------------------->
+                            <label ><b>Περιέχει Πλίνθο;</b></label>
+                            <div class="radioButtons">
+                                <label for="SM_plinthos_NAI"><b>Ναι</b></label>
+                                <input type="radio" name="SM_plinthos" id="SM_plinthos_NAI" onchange="checkPlintho();" >
+
+                                <label for="SM_plinthos_OXI"><b>Όχι</b></label>
+                                <input type="radio" name="SM_plinthos" id="SM_plinthos_OXI" onchange="checkPlintho();" checked>
+                            </div>
+
+
+                            <div id="hasPlinthoDiv" style="display:none">
+                                <label for="SM_plinthos_NAI_perigrafi"><b>Περιγραφή</b></label>
+                                <textarea name="SM_plinthos_NAI_perigrafi" id="SM_plinthos_NAI_perigrafi"></textarea>
+                            </div>
+
+                            <!-- -------------- Συνδετικό υλικό (χρώμα) -------------------->
+                            <label for="SM_syndetiko_uliko" style="text-align: center;"><b>Συνδετικό υλικό (χρώμα)</b></label>
+                            <select name="SM_syndetiko_uliko" id="SM_syndetiko_uliko" onchange="otherColor()">
+                                
                             </select>
 
-                            <label for="SM_lithos_NAI_perigrafi"><b>Περιγραφη</b></label>
-                            <textarea name="SM_lithos_NAI_perigrafi" id="SM_lithos_NAI_perigrafi"></textarea>
-                        </div>
 
-                         <!-- -------------- Πλίνθο -------------------->
-                        <label ><b>Περιέχει Πλίνθο;</b></label>
-                        <div class="radioButtons">
-                            <label for="SM_plinthos_NAI"><b>Ναι</b></label>
-                            <input type="radio" name="SM_plinthos" id="SM_plinthos_NAI" onchange="checkPlintho();" >
-    
-                            <label for="SM_plinthos_OXI"><b>Όχι</b></label>
-                            <input type="radio" name="SM_plinthos" id="SM_plinthos_OXI" onchange="checkPlintho();" checked>
-                        </div>
+                            <div id="hasSyndetikoDiv" style="display:none">
+                                <label for="SM_syndetiko_uliko_other"><b>Άλλο Συνδετικό υλικό (χρώμα)</b></label>
+                                <input type="text" name="SM_syndetiko_uliko_other" id="SM_syndetiko_uliko_other">
+                            </div>
 
-
-                        <div id="hasPlinthoDiv" style="display:none">
-                           <label for="SM_plinthos_NAI_perigrafi"><b>Περιγραφή</b></label>
-                            <textarea name="SM_plinthos_NAI_perigrafi" id="SM_plinthos_NAI_perigrafi"></textarea>
-                        </div>
-
-                         <!-- -------------- Συνδετικό υλικό (χρώμα) -------------------->
-                        <label for="SM_syndetiko_uliko" style="text-align: center;"><b>Συνδετικό υλικό (χρώμα)</b></label>
-                        <select name="SM_syndetiko_uliko" id="SM_syndetiko_uliko" onchange="otherColor()">
                             
-                        </select>
+                            <!-- -------------- Επίχρισμα (είδος,χρώμα) -------------------->
+                            <label for="moderatorIDText1" style="text-align: center;"><b>Επίχρισμα (είδος,χρώμα)</b></label>
+                            
+                            <div style="display: grid;grid-template-columns: repeat(2,1fr);grid-column-gap: 0px; margin-left: 6%;">
+                                <div>
+                                    <label for="SM_epixrisma_eidos" ><b>Είδος</b></label>
+                                    <select name="SM_epixrisma_eidos" id="SM_epixrisma_eidos" style="width:85%">
+                                        
+                                    </select>
+                                </div>
 
-
-                        <div id="hasSyndetikoDiv" style="display:none">
-                            <label for="SM_syndetiko_uliko_other"><b>Άλλο Συνδετικό υλικό (χρώμα)</b></label>
-                            <input type="text" name="SM_syndetiko_uliko_other" id="SM_syndetiko_uliko_other">
-                        </div>
-
-                        
-                        <!-- -------------- Επίχρισμα (είδος,χρώμα) -------------------->
-                        <label for="moderatorIDText1" style="text-align: center;"><b>Επίχρισμα (είδος,χρώμα)</b></label>
-                        
-                        <div class="checkBoxes">
-                            <div>
-                                <label for="SM_epixrisma_eidos" ><b>Είδος</b></label>
-                                <select name="SM_epixrisma_eidos" id="SM_epixrisma_eidos" >
-                                   
-                                </select>
+                                <div>
+                                    <label for="SM_epixrisma_xroma" ><b>Χρώμα</b></label>
+                                    <select name="SM_epixrisma_xroma" id="SM_epixrisma_xroma" onchange="otherEpixrisma()" style="width:85%">
+                                    
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="hasEpixrismaDiv" style="display:none">
+                                <label for="SM_epixrisma_xroma_allo"><b>Άλλο Επίχρισμα (χρώμα)</b></label>
+                                <input type="text" name="SM_epixrisma_xroma_allo" id="SM_epixrisma_xroma_allo">
                             </div>
 
-                            <div>
-                                <label for="SM_epixrisma_xroma" ><b>Χρώμα</b></label>
-                                <select name="SM_epixrisma_xroma" id="SM_epixrisma_xroma" onchange="otherEpixrisma()">
-                                  
-                                </select>
+                            <!-- -------------- Κεραπομλπαστικός διάκοσμος -------------------->
+                            <label ><b>Έχει Κεραμολπαστικό διάκοσμο;</b></label>
+                            <div class="radioButtons">
+                                <label for="SM_keramoplastikos_NAI"><b>Ναι</b></label>
+                                <input type="radio" name="SM_keramoplastikos" id="SM_keramoplastikos_NAI" onchange="checkKeramoplastikos();" >
+
+                                <label for="SM_keramoplastikos_OXI"><b>Όχι</b></label>
+                                <input type="radio" name="SM_keramoplastikos" id="SM_keramoplastikos_OXI" onchange="checkKeramoplastikos();" checked>
                             </div>
+
+                            <div id="hasKeramoplastikosDiv" style="display:none">
+                                <label for="SM_keramoplastikos_NAI_perigrafi"><b>Περιγραφή</b></label>
+                                <textarea name="SM_keramoplastikos_NAI_perigrafi" id="SM_keramoplastikos_NAI_perigrafi"></textarea>
+                            </div>
+
+                            <!-- -------------- Spolia -------------------->
+                            <label ><b>Έχει Spolia;</b></label>
+                            <div class="radioButtons">
+                                <label for="SM_spollia_NAI"><b>Ναι</b></label>
+                                <input type="radio" name="SM_spollia" id="SM_spollia_NAI" onchange="checkSpolia();" >
+
+                                <label for="SM_spollia_OXI"><b>Όχι</b></label>
+                                <input type="radio" name="SM_spollia" id="SM_spollia_OXI" onchange="checkSpolia();" checked>
+                            </div>
+
+
+                            <div id="hasSpoliaDiv" style="display:none">
+                                <label for="SM_spollia_NAI_perigrafi"><b>Περιγραφή</b></label>
+                                <textarea name="moder" id="SM_spollia_NAI_perigrafi"></textarea>
+                            </div>
+
+                            <!-- -------------- Ξύλο -------------------->
+                            <label ><b>Έχει Ξύλο;</b></label>
+                            <div class="radioButtons">
+                                <label for="SM_xylo_NAI"><b>Ναι</b></label>
+                                <input type="radio" name="SM_xylo" id="SM_xylo_NAI" onchange="checkXilo();" >
+
+                                <label for="SM_xylo_OXI"><b>Όχι</b></label>
+                                <input type="radio" name="SM_xylo" id="SM_xylo_OXI" onchange="checkXilo();" checked>
+                            </div>
+
+
+                            <div id="hasXiloDiv" style="display:none">
+                                <label for="SM_xylo_NAI_perigrafi"><b>Περιγραφή</b></label>
+                                <textarea name="SM_xylo_NAI_perigrafi" id="SM_xylo_NAI_perigrafi"></textarea>
+                            </div>
+
+                            <!-- -------------- Μέγεθος στοιχείων -------------------->
+                            <label for="SM_megethos_stoixeiwn"><b>Μέγεθος στοιχείων</b></label>
+                            <textarea name="SM_megethos_stoixeiwn" id="SM_megethos_stoixeiwn"></textarea>
+
+                            <!-- -------------- Τοιχοποιία -------------------->
+                            <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Τοιχοποιία </b><i class='fas fa-minus'></i></div>
+                            <div class="checkBoxes" id="SM_toixopoiia">
+                                
+                            </div>
+
+                            <!-- -------------- Αριθμ. σωζ. δομών -------------------->
+                            <label for="SM_arithm_soz"><b>Αριθμ. σωζ. δομών</b></label>
+                            <input type="text" name="SM_arithm_soz" id="SM_arithm_soz" > 
+
+                            <!-- -------------- Δάπεδο -------------------->
+                            <label for="SM_dapedo" style="text-align: center;"><b>Δάπεδο</b></label>
+                            <select name="SM_dapedo" id="SM_dapedo" >
+
+                            </select>
+
+                            <!-- -------------- Θέση -------------------->
+                            <label for="SM_thesi" style="text-align: center;"><b>Θέση</b></label>
+                            <select name="SM_thesi" id="SM_thesi" >
+                            
+                            </select>
                         </div>
                         
-                        <div id="hasEpixrismaDiv" style="display:none">
-
-                            <label for="SM_epixrisma_xroma_allo"><b>Άλλο Επίχρισμα (χρώμα)</b></label>
-                            <input type="text" name="SM_epixrisma_xroma_allo" id="SM_epixrisma_xroma_allo">
-                        </div>
-
-                         <!-- -------------- Κεραπομλπαστικός διάκοσμος -------------------->
-                         <label ><b>Έχει Κεραπομλπαστικό διάκοσμο;</b></label>
-                         <div class="radioButtons">
-                             <label for="SM_keramoplastikos_NAI"><b>Ναι</b></label>
-                             <input type="radio" name="SM_keramoplastikos" id="SM_keramoplastikos_NAI" onchange="checkKeramoplastikos();" >
-     
-                             <label for="SM_keramoplastikos_OXI"><b>Όχι</b></label>
-                             <input type="radio" name="SM_keramoplastikos" id="SM_keramoplastikos_OXI" onchange="checkKeramoplastikos();" checked>
-                         </div>
- 
-                         <div id="hasKeramoplastikosDiv" style="display:none">
-                            <label for="SM_keramoplastikos_NAI_perigrafi"><b>Περιγραφή</b></label>
-                            <textarea name="SM_keramoplastikos_NAI_perigrafi" id="SM_keramoplastikos_NAI_perigrafi"></textarea>
-                         </div>
-
-                        <!-- -------------- Spolia -------------------->
-                        <label ><b>Έχει Spolia;</b></label>
-                        <div class="radioButtons">
-                            <label for="SM_spollia_NAI"><b>Ναι</b></label>
-                            <input type="radio" name="SM_spollia" id="SM_spollia_NAI" onchange="checkSpolia();" >
-    
-                            <label for="SM_spollia_OXI"><b>Όχι</b></label>
-                            <input type="radio" name="SM_spollia" id="SM_spollia_OXI" onchange="checkSpolia();" checked>
-                        </div>
-
-
-                        <div id="hasSpoliaDiv" style="display:none">
-                            <label for="SM_spollia_NAI_perigrafi"><b>Περιγραφή</b></label>
-                            <textarea name="moder" id="SM_spollia_NAI_perigrafi"></textarea>
-                        </div>
-
-                         <!-- -------------- Ξύλο -------------------->
-                         <label ><b>Έχει Ξύλο;</b></label>
-                         <div class="radioButtons">
-                             <label for="SM_xylo_NAI"><b>Ναι</b></label>
-                             <input type="radio" name="SM_xylo" id="SM_xylo_NAI" onchange="checkXilo();" >
-     
-                             <label for="SM_xylo_OXI"><b>Όχι</b></label>
-                             <input type="radio" name="SM_xylo" id="SM_xylo_OXI" onchange="checkXilo();" checked>
-                         </div>
- 
- 
-                         <div id="hasXiloDiv" style="display:none">
-                             <label for="SM_xylo_NAI_perigrafi"><b>Περιγραφή</b></label>
-                             <textarea name="SM_xylo_NAI_perigrafi" id="SM_xylo_NAI_perigrafi"></textarea>
-                         </div>
-
-                         <!-- -------------- Μέγεθος στοιχείων -------------------->
-                         <label for="SM_megethos_stoixeiwn"><b>Μέγεθος στοιχείων</b></label>
-                         <textarea name="SM_megethos_stoixeiwn" id="SM_megethos_stoixeiwn"></textarea>
-
-                          <!-- -------------- Τοιχοποιία -------------------->
-                        <div class="smallTitle"><i class='fas fa-minus'></i><b> Διάλεξε Τοιχοποιία </b><i class='fas fa-minus'></i></div>
-
-                        <div class="checkBoxes" id="SM_toixopoiia">
-                           
-                        </div>
-
-                        <!-- -------------- Αριθμ. σωζ. δομών -------------------->
-                        <label for="SM_arithm_soz"><b>Αριθμ. σωζ. δομών</b></label>
-                        <input type="number" name="SM_arithm_soz" id="SM_arithm_soz" value="0"> 
-
-                        <!-- -------------- Δάπεδο -------------------->
-                        <label for="SM_dapedo" style="text-align: center;"><b>Δάπεδο</b></label>
-                        <select name="SM_dapedo" id="SM_dapedo" >
-
-                        </select>
-
-                        <!-- -------------- Θέση -------------------->
-                        <label for="SM_thesi" style="text-align: center;"><b>Θέση</b></label>
-                        <select name="SM_thesi" id="SM_thesi" >
-                         
-                        </select>
 
                          <!-- -------------- Περιγραφή/ερμηνεία -------------------->
                         <label for="SM_perigrafi_erminia"><b>Περιγραφή/ερμηνεία</b></label>
@@ -351,14 +377,12 @@
 
                          <!-- -------------- Βάσει -------------------->
                          <div class="smallTitle"><i class='fas fa-minus'></i><b> Βάσει </b><i class='fas fa-minus'></i></div>
-                         
                          <div class="checkBoxes" id="SM_Vasei">
                            
                          </div>
 
                         <!-- -------------- Ανασκαφ. τεχνική -------------------->
                         <div class="smallTitle"><i class='fas fa-minus'></i><b> Ανασκαφ. τεχνική </b><i class='fas fa-minus'></i></div>
-
                         <div class="checkBoxes" id="SM_anaskaf_texn">
                           
                         </div>
@@ -387,10 +411,10 @@
                         <!-- -------------- Κόσκινο Ποσοστό + Νεροκόσκινο Ποσοστό-------------------->
                         <div class="geoLocation">
                             <label for="SM_koskino_pososto"><b>Κόσκινο Ποσοστό (%)</b></label>
-                            <input type="number" name="SM_koskino_pososto" id="SM_koskino_pososto" value="0">
+                            <input type="number" name="SM_koskino_pososto" min="0" max="100" id="SM_koskino_pososto" value="0" onchange="limiter1(this);">
 
                             <label for="SM_nerokoskino_pososto"><b>Νεροκόσκινο Ποσοστό (%)</b></label>
-                            <input type="number" name="SM_nerokoskino_pososto" id="SM_nerokoskino_pososto" value="0">
+                            <input type="number" name="SM_nerokoskino_pososto" min="0" max="100" id="SM_nerokoskino_pososto" value="0" onchange="limiter2(this);">
                         </div>
 
                         <!-- -------------- Ποσότητα κεραμικής (τελαρα/σακούλες) -------------------->
@@ -409,11 +433,39 @@
                         <label for="SM_hmerominia"><b>Ημερομηνία</b></label>
                         <input type="date" name="SM_hmerominia" id="SM_hmerominia">
 
-                        <button  id="saveSMbutton">Αποθήκευση <i class='fas fa-upload'></i></button>
+                        <button  id="searchButton" style="display:none" >Αναζήτηση <i class="fa fa-search"></i></button>
+
+                        <div id="hasSkeletonSection">
+                            <button  id="hasSkeleton" data-id="noSkel" >Σκελετός <i class='fas fa-skull-crossbones'></i></button>
+                            <input type="checkbox" id="skeletonCheckbox" onchange="checkSkeleton()">
+                        </div>
+
+                        <button  id="saveSMbutton" >Αποθήκευση <i class='fas fa-upload'></i></button>
                      
+                        <button  id="updateSMButton" style="display:none" data-id="">Ενημέρωση <i class='fas fa-upload'></i></button>
+
+                        <button  id="deleteSMbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
+
                     </div>
                    
                 </div>
+
+                <div id="PopUp">
+                     <div class="contentAlert">
+
+                        <i id="megethidikos" class="fa fa-search" style="font-size: 20vh;"></i>
+      
+                        <table id="SMtable"  >
+                            <thead> 
+
+                             </thead>
+                            <tbody id="SMtableBody"></tbody>
+                          </table>
+
+                          <button onclick="closePopUp()" id="closePopUpButton">Κλείσιμο</button>
+            
+                     </div>
+                  </div>
                     
                 <button id="goUpButton"><i class='far fa-caret-square-up'></i></button>
 
@@ -426,7 +478,7 @@
 
                     <div id="DepartmentTitle">
                         Τμήμα Ιστορίας, Αρχαιολογίας και Διαχείρισης 
-                        <div id="templeIcon"><i class="fa fa-university"></i></div> Πολιτισμικών Αγαθών 
+                        <div id="templeIcon"><i class="fas fa-university"></i></div> Πολιτισμικών Αγαθών 
                     </div>
 
                     <p id="SkeletosTitle">Σκελετός</p>
@@ -435,15 +487,15 @@
 
                         <!-- -------------- Έτος -------------------->
                         <label for="SKEL_etos"><b>Έτος</b></label>
-                        <input type="number" name="SKEL_etos" id="SKEL_etos" value="0">
+                        <input type="number" name="SKEL_etos" id="SKEL_etos" value="0"> <!-- -->
 
                         <!-- -------------- ΣΜ κοψίματος -------------------->
                         <label for="SKEL_sm_kops"><b>ΣΜ κοψίματος</b></label>
-                        <input type="number" name="SKEL_sm_kops" id="SKEL_sm_kops" value="0">
+                        <input type="number" name="SKEL_sm_kops" id="SKEL_sm_kops" value="0"> <!-- -->
 
                         <!-- -------------- Τομέας -------------------->
                         <label for="SKEL_tomeas"><b>Τομέας</b></label>
-                        <input type="number" name="SKEL_tomeas" id="SKEL_tomeas" value="0">
+                        <input type="number" name="SKEL_tomeas" id="SKEL_tomeas" value="0"> <!-- --> <!--Hmerominia -->
 
                          <!-- -------------- Κατασκευή -------------------->
                          <label for="SKEL_kataskeui"><b>Κατασκευή</b></label>
@@ -470,8 +522,8 @@
                         <input type="text" name="SKEL_kato_prin_apo" id="SKEL_kato_prin_apo">
 
                         <!-- -------------- Πάνω/μετά από -------------------->
-                        <label for="SEKL_pano_meta_apo"><b>Πάνω/μετά από</b></label>
-                        <input type="text" name="SEKL_pano_meta_apo" id="SEKL_pano_meta_apo">
+                        <label for="SKEL_pano_meta_apo"><b>Πάνω/μετά από</b></label>
+                        <input type="text" name="SKEL_pano_meta_apo" id="SKEL_pano_meta_apo">
 
                         <!-- -------------- Τύπος ταφής -------------------->
                         <label for="SKEL_typos_tafis" style="text-align: center;"><b>Τύπος ταφής</b></label>
@@ -501,11 +553,11 @@
 
                         <!-- -------------- Ανωτ. Υ. κραν. -------------------->
                         <label for="SKEL_anot_Y_kran"><b>Ανωτ. Υ. κραν.</b></label>
-                        <input type="text" name="SKEL_anot_Y_kran" id="SKEL_anot_Y_kran">
+                        <input type="number" name="SKEL_anot_Y_kran" id="SKEL_anot_Y_kran">
 
                         <!-- -------------- Κατωτ. Υ. κραν. -------------------->
                         <label for="SKEL_katot_Y_kran"><b>Κατωτ. Υ. κραν.</b></label>
-                        <input type="text" name="SKEL_katot_Y_kran" id="SKEL_katot_Y_kran">
+                        <input type="number" name="SKEL_katot_Y_kran" id="SKEL_katot_Y_kran">
 
                          <!-- --------------Μήκος/Πλάτος/Βάθος-------------------->
                         <div class="checkBoxes">
@@ -521,18 +573,23 @@
 
                         </div>
 
-                         <!-- --------------Οστά-------------------->
-                         <label for="SKEL_osta" style="text-align:center"><b>Οστά</b></label>
-                         <select name="SKEL_osta" id="SKEL_osta" >
-                            
-                         </select>
+                         <!-- --------------Οστά/Ταφή-------------------->
+                         <div style="display: grid;grid-template-columns: repeat(2,1fr);grid-column-gap: 0px; margin-left: 6%;">
+                            <div>
+                                <label for="SKEL_osta" style="text-align:center"><b>Οστά</b></label>
+                                <select name="SKEL_osta" id="SKEL_osta" style="width:85%">
+                                   
+                                </select>
+                            </div>
 
-                       <!-- --------------Ταφή-------------------->
-                        <label for="SKEL_tafi" style="text-align:center"><b>Ταφή</b></label>
-                        <select name="SKEL_tafi" id="SKEL_tafi" onchange="otherEpixrisma()">
-                            
-                        </select>
-                        
+                            <div>
+                                <label for="SKEL_tafi" style="text-align:center"><b>Ταφή</b></label>
+                                <select name="SKEL_tafi" id="SKEL_tafi"  style="width:85%">
+                                  
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- -------------- Προσανατολισμός-------------------->
                         <label for="SKEL_prosanatolismos"><b>Προσανατολισμός</b></label>
                         <input type="text" name="SKEL_prosanatolismos" id="SKEL_prosanatolismos">
@@ -571,7 +628,7 @@
 
                         <!-- -------------- Y. σκελετού κατά χώραν -------------------->
                         <label for="SKEL_Y_skel_kata_xoran"><b>Y. σκελετού κατά χώραν</b></label>
-                        <input type="textarea" name="SKEL_Y_skel_kata_xoran" id="SKEL_Y_skel_kata_xoran">
+                        <input type="number" name="SKEL_Y_skel_kata_xoran" id="SKEL_Y_skel_kata_xoran">
 
                         <!-- -------------- Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού) -------------------->
                         <label for="SKEL_mik_miriaiou_ostou"><b>Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού)</b></label>
@@ -587,27 +644,59 @@
 
                         <!-- -------------- Συνθήκες -------------------->
                         <label for="SKEL_sinthikes"><b>Συνθήκες</b></label>
-                        <input type="text" name="SKEL_sinthikes" id="SKEL_sinthikes" style="margin-bottom: 22%;">
-   
+                        <input type="text" name="SKEL_sinthikes" id="SKEL_sinthikes" >
+
+                         <!-- -------------- Ημερολόγιο -------------------->
+                         <label for="SKEL_hmerologio"><b>Ημερολόγιο</b></label>
+                         <input type="number" name="SKEL_hmerologio" id="SKEL_hmerologio" >
+
+                          <!-- -------------- Συντάκτης -------------------->
+                        <label for="SKEL_syntaktis"><b>Συντάκτης</b></label>
+                        <input type="text" name="SKEL_syntaktis" id="SKEL_syntaktis" >
+
+                         <!-- -------------- Ημερομηνία -------------------->
+                         <label for="SKEL_hmerominia"><b>Ημερομηνία</b></label>
+                         <input type="date" name="SKEL_hmerominia" id="SKEL_hmerominia" style="margin-bottom: 22%;">
+                         
+                         <button  id="updateSkeletonButton" data-id="" style="display:none">Ενημέρωση <i class='fas fa-upload'></i></button>
+
+                         <button  id="addNewSkeletonToSM" data-id="" style="display:none">Προσθήκη Νέου <i class='fas fa-upload'></i></button>
+
+                         <button  id="deleteSkelbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
+
                     </div>
 
                 </div>
 
                 <button id="goUpButton2"><i class='far fa-caret-square-up'></i></button>
 
-                <!-- <div id="bottomBar">
-                    <div id="secondScreenButton1"><i class='fas fa-layer-group'></i><p>Στρ. Μονάδα</p></div>
-                    <div id="secondScreenButton2"><i class='fas fa-skull-crossbones'></i><p>Σκελετός</p></div>
-                </div> -->
-
             </div>
 
-            <div id="bottomBar">
-                <div id="firstScreenButton1"><i class='fas fa-layer-group'></i><p>Στρ. Μονάδα</p></div>
-                <div id="firstScreenButton2"><i class='fas fa-skull-crossbones'></i><p>Σκελετός</p></div>
+            <div id="topBar" style="display:none">
+                <div id="backToSMfromSkeleton"  >Αποθηκευση <i class='far fa-check-circle' style='color:#32883d'></i></div>
+                <div id="backToMenu"  ><i class='fas fa-arrow-left'></i> Menu </div>
+            
             </div>
+            
 
+            <div id="warningAlert" ></div>
+
+            <div id="correctAlert" ></div>
+
+       </div> <!-- end Container -->
+
+       <!-- =================================PopUp======================================== -->
+       <div class="popupConfirmDelete" id="popupConfirmDelete">
+        <div class="overlaySeason"></div>
+        <div id="popupConfirmDelete2" class="contentConfirmDelete">
+
+            <p id="popUpMessage"></p>
+           
+            <button  id="deleteSM" style="display:none" data-id="" >Διαγραφή <i class='fas fa-trash-alt'></i></button>
+            <button  id="deleteSkel" style="display:none" data-id="" >Διαγραφή <i class='fas fa-trash-alt'></i></button>
+            
         </div>
+      </div> 
         
     </body>
     <script src="./js/index.js"></script>

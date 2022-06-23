@@ -1,0 +1,47 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"RESTful\"><param name=\"android-package\" value=\"cordova.plugin.restful.RESTful\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.skDemo.app"
+    },
+    "cordova-plugin-restful": {
+      "PACKAGE_NAME": "com.skDemo.app"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-restful.RESTful",
+      "file": "plugins/cordova-plugin-restful/www/RESTful.js",
+      "pluginId": "cordova-plugin-restful",
+      "clobbers": [
+        "cordova.plugins.RESTful"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.5",
+    "cordova-plugin-restful": "0.0.3"
+  }
+}

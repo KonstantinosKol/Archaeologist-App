@@ -1,6 +1,6 @@
 {
-  "name": "com.archaeologistapp.app",
-  "displayName": "ArchaeologistApp",
+  "name": "com.skdemo.app",
+  "displayName": "skiadApp",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -14,11 +14,14 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^9.1.0",
-    "cordova-plugin-whitelist": "^1.3.5"
+    "cordova-plugin-restful": "^0.0.4",
+    "cordova-plugin-whitelist": "^1.3.4",
+    "cordova-sqlite-storage": "^6.0.0"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-restful": {}
     },
     "platforms": [
       "android"
