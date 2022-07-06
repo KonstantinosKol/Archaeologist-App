@@ -61,11 +61,9 @@
                 <div id="firstScreenContent">
 
                     <div id="DepartmentTitle">
-                        Τμήμα Ιστορίας, Αρχαιολογίας και Διαχείρισης 
-                        <div id="templeIcon"><i class="fas fa-university"></i></div> Πολιτισμικών Αγαθών 
+                        <p id="SMtitle">Στρωματογραφική Μονάδα</p>
+                        <div id="templeIcon"><i class="fas fa-university"></i></div> 
                     </div>
-
-                    <p id="SMtitle">Στρωματογραφική Μονάδα</p>
                     
                     <div id="firstScreenContentSections">
 
@@ -433,7 +431,6 @@
                         <label for="SM_hmerominia"><b>Ημερομηνία</b></label>
                         <input type="date" name="SM_hmerominia" id="SM_hmerominia">
 
-                        <button  id="searchButton" style="display:none" >Αναζήτηση <i class="fa fa-search"></i></button>
 
                         <div id="hasSkeletonSection">
                             <button  id="hasSkeleton" data-id="noSkel" >Σκελετός <i class='fas fa-skull-crossbones'></i></button>
@@ -441,10 +438,6 @@
                         </div>
 
                         <button  id="saveSMbutton" >Αποθήκευση <i class='fas fa-upload'></i></button>
-                     
-                        <button  id="updateSMButton" style="display:none" data-id="">Ενημέρωση <i class='fas fa-upload'></i></button>
-
-                        <button  id="deleteSMbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
 
                     </div>
                    
@@ -477,11 +470,9 @@
                 <div id="secondScreenContent">
 
                     <div id="DepartmentTitle">
-                        Τμήμα Ιστορίας, Αρχαιολογίας και Διαχείρισης 
-                        <div id="templeIcon"><i class="fas fa-university"></i></div> Πολιτισμικών Αγαθών 
+                        <p id="SkeletosTitle">Σκελετός</p>
+                        <div id="templeIcon"><i class="fas fa-university"></i></div> 
                     </div>
-
-                    <p id="SkeletosTitle">Σκελετός</p>
                     
                     <div id="secondScreenContentSections">
 
@@ -656,13 +647,9 @@
 
                          <!-- -------------- Ημερομηνία -------------------->
                          <label for="SKEL_hmerominia"><b>Ημερομηνία</b></label>
-                         <input type="date" name="SKEL_hmerominia" id="SKEL_hmerominia" style="margin-bottom: 22%;">
+                         <input type="date" name="SKEL_hmerominia" id="SKEL_hmerominia" >
                          
-                         <button  id="updateSkeletonButton" data-id="" style="display:none">Ενημέρωση <i class='fas fa-upload'></i></button>
-
                          <button  id="addNewSkeletonToSM" data-id="" style="display:none">Προσθήκη Νέου <i class='fas fa-upload'></i></button>
-
-                         <button  id="deleteSkelbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
 
                     </div>
 
@@ -675,7 +662,18 @@
             <div id="topBar" style="display:none">
                 <div id="backToSMfromSkeleton"  >Αποθηκευση <i class='far fa-check-circle' style='color:#32883d'></i></div>
                 <div id="backToMenu"  ><i class='fas fa-arrow-left'></i> Menu </div>
-            
+                <button  id="searchButton" style="display:none" >Αναζήτηση <i class="fa fa-search"></i></button>
+                <button  id="BackToSearch1" style="display:none" ><i class='fas fa-arrow-left'></i></button>
+                <button  id="BackToSearch2" style="display:none" ><i class='fas fa-arrow-left'></i></button>
+                 
+                <!-- SM -->
+                <button  id="updateSMButton" style="display:none" data-id="">Ενημέρωση <i class='fas fa-upload'></i></button>
+                <button  id="deleteSMbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
+
+                  <!-- Skeleton -->
+                <button  id="updateSkeletonButton" data-id="" style="display:none">Ενημέρωση <i class='fas fa-upload'></i></button>
+                <button  id="deleteSkelbutton" style="display:none" data-id="">Διαγραφή <i class='fas fa-trash-alt'></i></button>
+
             </div>
             
 

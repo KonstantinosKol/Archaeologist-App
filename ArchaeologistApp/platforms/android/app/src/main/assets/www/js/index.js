@@ -24,11 +24,11 @@
 
 const myURL="http://hilon.dit.uop.gr/~db3u04/Lampros_Kwstas";
 
+
+// Fill checkbox and dropdowns when app is starting
  document.addEventListener("deviceready", function() {
         
-    
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSM.php", (response) => {
-        // console.log(response)
         
         var data = response["Typos_SM"];
         // ---------------Typos SM---------
@@ -183,7 +183,7 @@ const myURL="http://hilon.dit.uop.gr/~db3u04/Lampros_Kwstas";
 
     }, (err) => {
         // Handle error
-        alert("-Alert on fill SM form-"+err)
+        alert("Alert on fill SM form"+err)
     });
 
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSkel.php", (response) => {
@@ -220,7 +220,7 @@ const myURL="http://hilon.dit.uop.gr/~db3u04/Lampros_Kwstas";
 
       }, (err) => {
             // Handle error
-            alert("-Alert on fill Skeleton form-"+err)
+            alert("Alert on fill Skeleton form"+err)
         });
 
 
@@ -230,281 +230,9 @@ const myURL="http://hilon.dit.uop.gr/~db3u04/Lampros_Kwstas";
 
 
 
-
-
-
-
-
-  
-
-
-// $( document ).ready(function() {
-//     $.ajax({
-//         url: myURL+"/ReadSM.php",
-//         dataType: 'json',
-//         jsonp:"callback",
-//         success: function (response) {
-        
-//         var data = response["Typos_SM"];
-//         // ---------------Typos SM---------
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SMtypos_Sm").append(tr_str);
-//         });
-
-//          // ---------------Klisi pros---------
-//          data = response["Klisi_pros"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SMklisi_Pros").append(tr_str);
-//         });
-
-//           // ---------------Κατηγορία/Τύπος---------
-//           data = response["Katigoria_typos"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SMkatigoria_typos").append(tr_str);
-//         });
-
-//         // ---------------Υλικό---------
-//         data = response["Yliko"];
-//            $.each(data, function() {
-//             var tr_str = ` <label for="SM_uliko_${this.id}"><b>${this.Selections}</b></label>
-//             <input type="checkbox" name="SM_uliko_${this.id}" id="SM_uliko_${this.id}">`;
-//             $("#SM_uliko").append(tr_str);
-//         });
-
-//           // ---------------Δομή/Υφή---------
-//           data = response["Domi_Yfi"];
-//           $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SMdomi_yfi").append(tr_str);
-//         });
-
-//          // ---------------Χρώμα---------
-//          data = response["Xroma"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SMxroma").append(tr_str);
-//         });
-
-//          // ---------------Προσμίξεις---------
-//          data = response["Prosmixeis"];
-//          $.each(data, function() {
-//             var tr_str = `<label for="SM_prosmixeis_${this.id}"><b>${this.Selections}</b></label>
-//             <input type="checkbox" name="SM_prosmixeis_${this.id}" id="SM_prosmixeis_${this.id}" >`;
-//             $("#SM_prosmixeis").append(tr_str);
-//         });
-
-//          // ---------------Λίθος---------
-//          data = response["Lithos"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_lithos_NAI_uliko").append(tr_str);
-//         });
-
-//          // ---------------Συνδετικό υλικό (χρώμα)---------
-//          data = response["Syndetiko_Ylko"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_syndetiko_uliko").append(tr_str);
-           
-//         });
-//         var tr_str = `<option value="other">Άλλο</option>`;
-//         $("#SM_syndetiko_uliko").append(tr_str);
-
-//          // ---------------Επίχρισμα (είδος)---------
-//          data = response["Epixrisma_eidos"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_epixrisma_eidos").append(tr_str);
-//         });
-
-//          // ---------------Επίχρισμα (χρώμα)---------
-//          data = response["Epixrisma_xroma"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_epixrisma_xroma").append(tr_str);
-//         });
-//         var tr_str = `<option value="other">Άλλο</option>`;
-//         $("#SM_epixrisma_xroma").append(tr_str);
-
-//           // ---------------Τοιχοποιία---------
-//           data = response["Toixopoiia"];
-//           $.each(data, function() {
-//             var tr_str = `<label for="SM_toixopoiia_${this.id}"><b>${this.Selections}</b></label>
-//             <input type="checkbox" name="SM_toixopoiia_${this.id}" id="SM_toixopoiia_${this.id}" >`;
-//             $("#SM_toixopoiia").append(tr_str);
-//         });
-
-//          // ---------------Δάπεδο---------
-//          data = response["Dapedo"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_dapedo").append(tr_str);
-//         });
-
-//           // ------------Θέση------------
-//           data = response["Thesi"];
-//           $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_thesi").append(tr_str);
-//         });
-
-//          // ------------Χρονολόγιση από------------
-//          data = response["Xronologisi_apo"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_xronologisi_apo").append(tr_str);
-//         });
-
-//          // ------------Χρονολόγιση μέχρι------------
-//          data = response["Xronologisi_mexri"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_xronologisi_mexri").append(tr_str);
-//         });
-
-//          // ---------------Βάσει---------
-//          data = response["Vasei"];
-//          $.each(data, function() {
-//             var tr_str = `<label for="SM_Vasei_${this.id}"><b>${this.Selections}</b></label>
-//             <input type="checkbox" name="SM_Vasei_${this.id}" id="SM_Vasei_${this.id}" >`;
-//             $("#SM_Vasei").append(tr_str);
-//         });
-
-//           // ---------------Ανασκαφ. τεχνική---------
-//           data = response["Anaskaf_texn"];
-//           $.each(data, function() {
-//             var tr_str = `<label for="SM_anaskaf_texn_${this.id}"><b>${this.Selections}</b></label>
-//             <input type="checkbox" name="SM_anaskaf_texn_${this.id}" id="SM_anaskaf_texn_${this.id}" >`;
-//             $("#SM_anaskaf_texn").append(tr_str);
-//         });
-
-//          // ---------------Συνθήκες---------
-//          data = response["Sinthikes"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_sinthikes").append(tr_str);
-//         });
-
-//          // ---------------Πιθανότητα επιμίξεων---------
-//          data = response["Pithanotita_epim"];
-//          $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SM_pithanotita").append(tr_str);
-//         });
-       
-     
-
-            
-//         }//====End Success    
-//     });//===End AJAX
-
-//     $.ajax({
-//         url: myURL+"/ReadSkel.php",
-//         dataType: 'json',
-//         jsonp:"callback",
-//         success: function (response) {
-        
-//         var data = response["Typos_tafis"];
-//         // ---------------Typos SM---------
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SKEL_typos_tafis").append(tr_str);
-//         });
-
-//          // ---------------Klisi pros---------
-//          data = response["Typos_tafou"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SKEL_typos_tafou").append(tr_str);
-//         });
-
-//           // ---------------Κατηγορία/Τύπος---------
-//           data = response["Osta"];
-//         $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SKEL_osta").append(tr_str);
-//         });
-
-//         // ---------------Υλικό---------
-//         data = response["Tafi"];
-//            $.each(data, function() {
-//             var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-//             $("#SKEL_tafi").append(tr_str);
-//         }); 
-
-
-//       }//====End Success    
-//     });//===End AJAX
-
-
-//     //     $.ajax({
-//     //     url: "https://undes1red.com/ArcAppDirectory/Read_SM_and_Skeletons.php",
-//     //     dataType: 'jsonp',
-//     //     jsonp:"callback",
-//     //     success: function (data) {
-//     //     // console.log(data)
-//     //    // console.log(data)
-//     // //    var data= response;
-//     //    var len = data.length;
-
-//     //    for(var i=0; i<len; i++){
-
-//     //        var len2 = data[i].Skeletons.length;
-
-//     //        var arr = new Array();
-//     //        arr = data[i].Skeletons;
-             
-//     //            var str =`<tr >
-//     //                        <td width"0%"  style="display:none" >${data[i].SM_id}</td>
-//     //                        <td width"80%"  style="background: linear-gradient(180deg, rgba(40,136,136,1) 0%, rgba(48,96,96,1) 100%)" data-id="TdWithSM" ><p id="SMtext" >${data[i].SM_SM}</p></td>
-//     //                        <td  width"20%" style="background: linear-gradient(180deg, rgba(40,136,136,1) 0%, rgba(48,96,96,1) 100%)" data-id="TdWithSM" ><button class="goToSM"><i class='fas fa-arrow-right'></i></button>
-//     //                     </tr>`;
-             
-           
-//     //            str = str +`
-//     //            <tr> 
-//     //            <td colspan="3">
-//     //                <div class="SMrowExtendedDiv" >`
-//     //                if(len2 != 0){
-//     //                    for(var j=0; j<len2; j++){
-//     //                        str = str +`<div class="SMrowExtendedDivContentRow">
-//     //                                        <p >${arr[j].skeletonId}</p>
-//     //                                        <button onclick="goToSkeleton(this)" class="goToSkeleton"><i class='fas fa-arrow-right'></i></button> 
-//     //                                    </div>`;  
-//     //                    }         
-//     //                }
-//     //            str = str + `<button >Add Skeleton</button>`               
-//     //            str = str +`  </div>
-//     //                        </td><
-//     //                    /tr>`;  
-           
-//     //        $("#SMtable tbody").append(str); 
-//     //        $("td[colspan=3]").children().hide(); 
-
-//     //         // Department=data[i].Department;
-//     //         // // alert(data[i].id);
-//     //         // var tr_str = `<li class="button1" >${Department}</li>`;
-//     //         // $("#myUL").append(tr_str);
-
-//     //     }
-        
-       
-//     //   }//====End Success    
-//     // });//===End AJAX
-
-//   })
-
-
-
-
-
-/* ==========================Slide drop in Table-List=============*/
+/* ========================== Slide drop in Table-List =============*/
 $('#SMtable tbody').on('click', 'td', function (event) {
             
-
     event.stopPropagation();
     if($(this).index()==0 ){
         if($(this).attr("data-id") == "TdWithSM"){
@@ -516,11 +244,10 @@ $('#SMtable tbody').on('click', 'td', function (event) {
             $(this).children().slideUp();
         }
     }
-    
-        
+      
 });
 
-
+//make URL from inputs in SM form
 function returnSM_URL(condition){
 
     // <!-- -------------- ΣΜ -------------------->
@@ -1103,12 +830,12 @@ function returnSM_URL(condition){
 
 }
 
-
+//make URL from inputs in Skeleton form
 function returnSkeleton_URL(){
        // -------------- Έτος --------------------
        var SKEL_etos=$('#SKEL_etos').val();
        if(SKEL_etos == "")
-           SKEL_etos  = 4;
+           SKEL_etos  = 0;
        
        // -------------- ΣΜ κοψίματος --------------------
        var SKEL_sm_kops=$('#SKEL_sm_kops').val();
@@ -1193,18 +920,18 @@ function returnSkeleton_URL(){
        
        //<!-- -------------- Μήκος -------------------->
        var SKEL_mikos=$('#SKEL_mikos').val();
-    //    if( SKEL_mikos == "")
-    //        SKEL_mikos  = "-";
+       if( SKEL_mikos == "")
+           SKEL_mikos  = 0;
            
        //<!-- -------------- Πλάτος -------------------->
        var SKEL_platos=$('#SKEL_platos').val() ;
-    //    if( SKEL_platos == "")
-    //        SKEL_platos  = "-";
+       if( SKEL_platos == "")
+           SKEL_platos  = 0;
        
        //<!-- -------------- Βάθος -------------------->
        var SKEL_vathos=$('#SKEL_vathos').val();
-    //    if( SKEL_vathos == "")
-    //        SKEL_vathos  = "-";
+       if( SKEL_vathos == "")
+           SKEL_vathos  = 0;
        
        //<!-- -------------- Οστά -------------------->
        var SKEL_osta = $("#SKEL_osta option:selected").val();  //id 
@@ -1263,8 +990,8 @@ function returnSkeleton_URL(){
        
        //<!-- -------------- Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού) -------------------->
        var SKEL_mik_miriaiou_ostou=$('#SKEL_mik_miriaiou_ostou').val();
-    //    if( SKEL_mik_miriaiou_ostou == "")
-    //        SKEL_mik_miriaiou_ostou  = "-";
+       if( SKEL_mik_miriaiou_ostou == "")
+           SKEL_mik_miriaiou_ostou  = 0;
        
        //<!-- -------------- Συνευρήματα (με Α/Α) -------------------->
        var SKEL_syneurimata=$('#SKEL_syneurimata').val();
@@ -1350,7 +1077,7 @@ function returnSkeleton_URL(){
 }
 
 
-
+//insert new entry SM/SM+Skeleton
 function insertNewSM(){
 
     if($("#skeletonCheckbox").is(':checked')){
@@ -1360,13 +1087,12 @@ function insertNewSM(){
 
         var URL1= returnSkeleton_URL();
         
-        // alert(URL);
         //------------------------------ Add SM --------------------------
          cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/store_sm.php?"+URL, (response) => {
             SM_id=response.SM_id
 
             var URL= returnSkeleton_URL();
-          
+           //------------------------------ Add Skeleton --------------------------
             cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/store_skeleton.php?SM_id="+SM_id+"&"+URL, (response) => {
                     $("#correctAlert").html("Αποθήκευση <i class='fas fa-check-double' style='font-size:20px;color:#28b83b'></i>")
                     $("#correctAlert").animate({bottom: '10%'});
@@ -1384,8 +1110,7 @@ function insertNewSM(){
         
     }else{
         var URL= returnSM_URL();
-
-        // alert(URL);
+         //------------------------------ Add SM --------------------------
         cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/store_sm.php?"+URL, (response) => {
             $("#correctAlert").html("Αποθήκευση <i class='far fa-check-circle' style='font-size:20px;color:#28b83b'></i>")
             $("#correctAlert").animate({bottom: '10%'});
@@ -1400,7 +1125,7 @@ function insertNewSM(){
 
 }
 
-// ======================== Add SM from menu============================
+// ======================== Add SM from menu ============================
 $('#add_SM_ButtonInMenu').on('click',  function(e){ 
     
     document.querySelector('.containerS').classList.toggle('view-change1');
@@ -1414,13 +1139,21 @@ $('#add_SM_ButtonInMenu').on('click',  function(e){
 
     $("#backToSMfromSkeleton").hide();
     $("#backToMenu").show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
+
+    $("#deleteSkelbutton").hide();
+    $("#updateSkeletonButton").hide()
 
     clearSM();
  
 });
 
 
-// ======================== Search from menu============================
+// ======================== Search from menu ============================
 $('#searchButtonInMenu').on('click',  function(e){ 
     document.querySelector('.containerS').classList.toggle('view-change1');
     $("#topBar").show();
@@ -1432,6 +1165,14 @@ $('#searchButtonInMenu').on('click',  function(e){
 
     $('#backToSMfromSkeleton').hide();
     $('#backToMenu').show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
+
+    $("#deleteSkelbutton").hide();
+    $("#updateSkeletonButton").hide()
 
     clearSM();
  
@@ -1448,24 +1189,18 @@ $('#backToMenu').on('click', function(e){
     clearSkeleton();
 });
 
-// ======================== Go to SM from Array============================
+//  Go to SM from Array button
 $('#SMtable tbody').on('click', '.goToSM', function(e){ 
-
-
-    // alert($(this).attr("data-id"));
 
     document.getElementById("PopUp").classList.toggle("activeAlert");
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#firstScreenContent').animate({scrollTop:0}, '300');
  
-    //===================== Fill SM inputs ===============================
     fill_SM_inputs( $(this).attr("data-id"))
-    
-    //===================== Fill SM inputs ===============================
 
     $("#updateSMButton").show();
     $("#deleteSMbutton").show();
@@ -1475,34 +1210,40 @@ $('#SMtable tbody').on('click', '.goToSM', function(e){
     $('#saveSMbutton').hide();
     $('#hasSkeletonSection').hide();
 
+    $("#deleteSkelbutton").hide()
+    $("#updateSkeletonButton").hide()
 
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').show();
+    $('#BackToSearch2').hide();
 
 });
 
 
-// ======================== Go to Skeleton from Array============================
-
-
+//  Go to Skeleton from Array button
 function goToSkeleton(e,skelID){
-    // alert("Skeleton id -->"+skelID);
 
     document.getElementById("PopUp").classList.toggle("activeAlert");
     document.querySelector('.containerS').classList.toggle('view-change2');
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#secondScreenContent').animate({scrollTop:0}, '300');
 
-    //===================== Fill Skeleton inputs ===============================
     fill_Skeleton_inputs(skelID)
-    //===================== Fill Skeleton inputs ===============================
 
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').show();
+    $('#searchButton').hide();
+    $('#addNewSkeletonToSM').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
 
     $('#updateSkeletonButton').show();
     $('#deleteSkelbutton').show();
@@ -1511,20 +1252,23 @@ function goToSkeleton(e,skelID){
 
 }
 
+//Add skeleton button in already inserted SM
 function addSkeletonFromArray(SM_id){
-    // alert("SM id -->"+SM_id);
 
     document.getElementById("PopUp").classList.toggle("activeAlert");
     document.querySelector('.containerS').classList.toggle('view-change2');
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#secondScreenContent').animate({scrollTop:0}, '300');
 
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').show();
+    $('#searchButton').hide();
 
     $('#addNewSkeletonToSM').show();
     $('#addNewSkeletonToSM').attr('data-id',SM_id);
@@ -1533,30 +1277,25 @@ function addSkeletonFromArray(SM_id){
  
 }
 
-// ======================== Update Skeleton ============================
+//  Update Skeleton  
 $('#updateSkeletonButton').on('click', function(e){ 
 
-    document.getElementById("PopUp").classList.toggle("activeAlert");
-    document.querySelector('.containerS').classList.toggle('view-change2');
-    $("#goUpButton").hide();
-    $("#topBar").hide();
-
-    //-------------------------------Make URL---------------------------------------
-    var URL= returnSM_URL()
-    //-------------------------------Searching Results-----------------------
-
-    // alert( $(this).attr('data-id'))
+    // document.getElementById("PopUp").classList.toggle("activeAlert");
+    // document.querySelector('.containerS').classList.toggle('view-change2');
+    // $("#goUpButton").hide();
+    // $("#topBar").hide();
 
     var URL= returnSkeleton_URL();
     var Skel_id=$(this).attr('data-id')
+    // alert(myURL+"/Update_Skeleton.php?Skel_id="+Skel_id+"&"+URL);
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/Update_Skeleton.php?Skel_id="+Skel_id+"&"+URL, (response) => {
         $("#correctAlert").html("Ενημέρωση <i class='far fa-check-circle' style='font-size:20px;color:#28b83b'></i>")
         $("#correctAlert").animate({bottom: '10%'});
         setTimeout(function() {
             $("#correctAlert").animate({bottom: '-100px'});
         }, 2500);
-        fill_the_List();
-        clearSkeleton();
+        // fill_the_List();
+        // clearSkeleton();
         $('#secondScreenContent').animate({scrollTop:0}, '300');
     }, (err) => {
         alert("error on update skeleton "+err)
@@ -1566,12 +1305,12 @@ $('#updateSkeletonButton').on('click', function(e){
 
 
 
-// ======================== Delete Skeleton ============================
+// Delete Skeleton button 
 $('#deleteSkelbutton').on('click', function(e){ 
 
-    document.getElementById("popupSeason").classList.toggle("activeSeason");
+    document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
     $("#popUpMessage").html("Είσαι σίγουρος πως θέλεις να διαγράψεις τον συγκεκριμένο Σκελετό;");
-    $('#popupSeason2').animate({
+    $('#popupConfirmDelete2').animate({
         top: "65%"
     }, "fast");
     $("#deleteSkel").show();
@@ -1581,10 +1320,10 @@ $('#deleteSkelbutton').on('click', function(e){
 });
 
 
-
+// Delete Skeleton 
 $('#deleteSkel').on('click', function(e){ 
-    document.getElementById("popupSeason").classList.toggle("activeSeason");
-    $('#popupSeason2').animate({
+    document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
+    $('#popupConfirmDelete2').animate({
         top: "1000px"
     }, "fast");
 
@@ -1621,7 +1360,7 @@ $('#deleteSkel').on('click', function(e){
 
 
 
-// ======================== Add new Skeleton in this SM============================
+//Add skeleton in already inserted SM
 $('#addNewSkeletonToSM').on('click', function(e){ 
 
     document.getElementById("PopUp").classList.toggle("activeAlert");
@@ -1631,11 +1370,9 @@ $('#addNewSkeletonToSM').on('click', function(e){
 
     $('#addNewSkeletonToSM').hide();
 
-    //-------------------------------Searching Results-----------------------
-
     var SM_id=$(this).attr('data-id')
     var URL = returnSkeleton_URL();
-    // alert(myURL+"/Update_Skeleton.php?SM_id="+SM_id+"&"+URL);
+
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/store_skeleton.php?SM_id="+SM_id+"&"+URL, (response) => {
             // alert('Success call get1');
             $("#correctAlert").html("Αποθήκευση <i class='fas fa-check-double' style='font-size:20px;color:#28b83b'></i>")
@@ -1653,7 +1390,7 @@ $('#addNewSkeletonToSM').on('click', function(e){
 });
 
 
-// ======================== Update SM============================
+//  Update SM
 $('#updateSMButton').on('click', function(e){ 
 
    var URL= returnSM_URL()
@@ -1666,7 +1403,7 @@ $('#updateSMButton').on('click', function(e){
        setTimeout(function() {
            $("#correctAlert").animate({bottom: '-100px'});
        }, 2500);
-       clearSM();
+    //    clearSM();
        $('#firstScreenContent').animate({scrollTop:0}, '300');
        $("#searchButton").hide();
        $("#updateSMButton").hide();
@@ -1681,21 +1418,21 @@ $('#updateSMButton').on('click', function(e){
 });
 
 
-// ======================== Delete SM============================
+//  Delete SM button
 $('#deleteSMbutton').on('click', function(e){ 
-    document.getElementById("popupSeason").classList.toggle("activeSeason");
-    $("#popUpMessage").html("Είσαι σίγουρος πως θέλεις να διαγράψεις την συγκεκριμένη Στρ. Μον και τις σχέσεις της");
-    $('#popupSeason2').animate({
+    document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
+    $("#popUpMessage").html("Είσαι σίγουρος πως θέλεις να διαγράψεις την συγκεκριμένη Στρ. Μον και τις σχέσεις της;");
+    $('#popupConfirmDelete2').animate({
         top: "65%"
     }, "fast");
     $("#deleteSM").show();
     $("#deleteSM").attr("data-id",$(this).attr('data-id'));
 });
 
-
+//  Delete SM
 $('#deleteSM').on('click', function(e){ 
-    document.getElementById("popupSeason").classList.toggle("activeSeason");
-    $('#popupSeason2').animate({
+    document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
+    $('#popupConfirmDelete2').animate({
         top: "1000px"
     }, "fast");
     $('#topBar').hide()
@@ -1716,7 +1453,7 @@ $('#deleteSM').on('click', function(e){
         $("#deleteSMbutton").hide();
         $("#saveSMbutton").show();
         $("#hasSkeletonSection").show();
-        fill_the_List();
+        // fill_the_List();
     }, (err) => {
         alert("error on delete sm"+err)
     });
@@ -1734,17 +1471,16 @@ $('#deleteSM').on('click', function(e){
  
  });
 
- // ======================== Add new Skeleton in this SM============================
+ // Close bottom popup
 $('.overlaySeason').on('click', function(e){ 
-    document.getElementById("popupSeason").classList.toggle("activeSeason");
-    $('#popupSeason2').animate({
+    document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
+    $('#popupConfirmDelete2').animate({
         top: "1000px"
     }, "fast");
 });
 
 
 
-//================================If SM has Skeleton=========================
 
 
 function checkSkeleton(){
@@ -1756,6 +1492,7 @@ function checkSkeleton(){
     }
 }
 
+//button to go on skeleton form
 $("#hasSkeleton").on('click', function(e) {
 
     e.preventDefault();
@@ -1764,6 +1501,8 @@ $("#hasSkeleton").on('click', function(e) {
 
     $('#backToSMfromSkeleton').show();
     $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
 
     $('#updateSkeletonButton').hide();
     $('#addNewSkeletonToSM').hide();
@@ -1774,7 +1513,7 @@ $("#hasSkeleton").on('click', function(e) {
 
 
 
-//===================== Go to SM from Skeleton===================
+// Go to SM from Skeleton
 $("#backToSMfromSkeleton").on('click', function(e) {
 
     e.preventDefault();
@@ -1783,12 +1522,32 @@ $("#backToSMfromSkeleton").on('click', function(e) {
 
     $('#backToSMfromSkeleton').hide();
     $('#backToMenu').show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+});
+
+// Go Back on Search PopUp from SM
+$("#BackToSearch1").on('click', function(e) {
+
+    document.getElementById("PopUp").classList.toggle("activeAlert");
+    $("#goUpButton").hide();
+    $("#topBar").hide();
+
+});
+
+// Go Back on Search PopUp from Skeleton
+$("#BackToSearch2").on('click', function(e) {
+    document.querySelector('.containerS').classList.toggle('view-change2');
+    document.getElementById("PopUp").classList.toggle("activeAlert");
+    $("#goUpButton").hide();
+    $("#topBar").hide();
 
 });
 
 
 
-//===================== SM sections DIV ===================
+//SM sections DIV 
 
 $("#SM_Sydetagmenes").on('click', function(e) {
     
@@ -1819,14 +1578,13 @@ $("#SM_Ylika_texniki").on('click', function(e) {
 
 
 
-//===================== Open Search PopUp===================
+//Open Search PopUp
 $("#searchButton").on('click', function(e) {
     document.getElementById("PopUp").classList.toggle("activeAlert");
     $("#goUpButton").hide();
     $("#topBar").hide();
 
-   
-    //-------------------------------Searching Results-----------------------
+    //Searching Results
     fill_the_List();
 
 });
@@ -1837,10 +1595,8 @@ $("#searchButton").on('click', function(e) {
 function fill_the_List(){
     $("#SMtable tbody").empty();
     var URL = returnSM_URL("search");
-    // console.log(myURL+"/Read_SM_and_Skeletons_with_checkboxes.php?"+URL);
-    // alert(myURL+"/Read_SM_and_Skeletons_with_checkboxes.php?"+URL);
+ 
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/Read_SM_and_Skeletons_with_checkboxes.php?"+URL, (response) => {
-    // cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/Read_SM_and_Skeletons.php?", (response) => {
 
         var data= response;
         var len = data.length;
@@ -1900,6 +1656,7 @@ function fill_the_List(){
        });
 }
 
+//fill SM fields from searching results
 function fill_SM_inputs(smID){
 
     // alert("fill_sm:"+smID)
@@ -2046,7 +1803,7 @@ function fill_SM_inputs(smID){
        });
 }
 
-
+//fill skeleton fields from searching results
 function fill_Skeleton_inputs(skeletonID){
   
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/Display_Skeleton.php?skeletonID="+skeletonID, (response) => {
@@ -2108,13 +1865,23 @@ function fill_Skeleton_inputs(skeletonID){
 
 
 function closePopUp(){
+
+    $('.containerS').attr( "class","containerS view" )
+    $('#topBar').hide()
+    $('#firstScreenContent').animate({scrollTop:0}, '300');
+    $('#secondScreenContent').animate({scrollTop:0}, '300');
+    clearSM();
+    clearSkeleton();
+
     document.getElementById("PopUp").classList.toggle("activeAlert");
-    $("#goUpButton").show();
-    $("#topBar").show();
+
+    $("#backToMenu").hide();
+    $("#BackToSearch1").hide();
+    $("#BackToSearch2").hide();
+
 }
 
 
-//=================================================================
 
 function checkLithos(){
     var thisDiv = $('#hasLithoDiv');
@@ -2213,8 +1980,7 @@ $(".checkBoxes").on('click','input:checkbox', function(e) {
 });
 
 
-// =========================Save==================
-
+//Check insertion SM / SM and skeleton
 $('#saveSMbutton').on('click', function(e) {
 
     e.preventDefault();
@@ -2268,7 +2034,7 @@ $('#saveSMbutton').on('click', function(e) {
 });
 
 
-
+//clear skeleton inputs
 function clearSkeleton(){
     //Dropdowns
     $('#SKEL_typos_tafis').prop("selectedIndex", 0);
@@ -2313,7 +2079,7 @@ function clearSkeleton(){
 
 
 
-
+//clear SM inputs
 function clearSM(){
     //Dropwdowns
     $('#SMtypos_Sm').prop("selectedIndex", 0);
@@ -2452,6 +2218,7 @@ function clearSM(){
    
 }
 
+//Limiters for [0-100] number in inputs 
 function limiter1(input) {
     if (input.value < 0) input.value = 0;
     if (input.value > 100) input.value = 100;

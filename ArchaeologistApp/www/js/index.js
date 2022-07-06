@@ -21,212 +21,212 @@
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 //$( document ).ready(function() {
 
-
+//Change this to your online DB URL link
 const myURL="";
 
 
-//Fill checkbox and dropdowns when app is starting
- document.addEventListener("deviceready", function() {
-        
-    cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSM.php", (response) => {
-        
-        var data = response["Typos_SM"];
-        // ---------------Typos SM---------
+// Fill checkbox and dropdowns when app is starting
+document.addEventListener("deviceready", function() {
+    
+cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSM.php", (response) => {
+    
+    var data = response["Typos_SM"];
+    // ---------------Typos SM---------
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SMtypos_Sm").append(tr_str);
+    });
+
+        // ---------------Klisi pros---------
+        data = response["Klisi_pros"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SMklisi_Pros").append(tr_str);
+    });
+
+        // ---------------Κατηγορία/Τύπος---------
+        data = response["Katigoria_typos"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SMkatigoria_typos").append(tr_str);
+    });
+
+    // ---------------Υλικό---------
+    data = response["Yliko"];
         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SMtypos_Sm").append(tr_str);
-        });
+        var tr_str = ` <label for="SM_uliko_${this.id}"><b>${this.Selections}</b></label>
+        <input type="checkbox" name="SM_uliko_${this.id}" id="SM_uliko_${this.id}"/>`;
+        $("#SM_uliko").append(tr_str);
+    });
 
-         // ---------------Klisi pros---------
-         data = response["Klisi_pros"];
+        // ---------------Δομή/Υφή---------
+        data = response["Domi_Yfi"];
         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SMklisi_Pros").append(tr_str);
-        });
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SMdomi_yfi").append(tr_str);
+    });
 
-          // ---------------Κατηγορία/Τύπος---------
-          data = response["Katigoria_typos"];
+        // ---------------Χρώμα---------
+        data = response["Xroma"];
         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SMkatigoria_typos").append(tr_str);
-        });
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SMxroma").append(tr_str);
+    });
 
-        // ---------------Υλικό---------
-        data = response["Yliko"];
-           $.each(data, function() {
-            var tr_str = ` <label for="SM_uliko_${this.id}"><b>${this.Selections}</b></label>
-            <input type="checkbox" name="SM_uliko_${this.id}" id="SM_uliko_${this.id}"/>`;
-            $("#SM_uliko").append(tr_str);
-        });
-
-          // ---------------Δομή/Υφή---------
-          data = response["Domi_Yfi"];
-          $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SMdomi_yfi").append(tr_str);
-        });
-
-         // ---------------Χρώμα---------
-         data = response["Xroma"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SMxroma").append(tr_str);
-        });
-
-         // ---------------Προσμίξεις---------
-         data = response["Prosmixeis"];
-         $.each(data, function() {
-            var tr_str = `<label for="SM_prosmixeis_${this.id}"><b>${this.Selections}</b></label>
-            <input type="checkbox" name="SM_prosmixeis_${this.id}" id="SM_prosmixeis_${this.id}" >`;
-            $("#SM_prosmixeis").append(tr_str);
-        });
-
-         // ---------------Λίθος---------
-         data = response["Lithos"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_lithos_NAI_uliko").append(tr_str);
-        });
-
-         // ---------------Συνδετικό υλικό (χρώμα)---------
-         data = response["Syndetiko_Ylko"];
+        // ---------------Προσμίξεις---------
+        data = response["Prosmixeis"];
         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_syndetiko_uliko").append(tr_str);
-           
-        });
-        var tr_str = `<option value="other">Άλλο</option>`;
+        var tr_str = `<label for="SM_prosmixeis_${this.id}"><b>${this.Selections}</b></label>
+        <input type="checkbox" name="SM_prosmixeis_${this.id}" id="SM_prosmixeis_${this.id}" >`;
+        $("#SM_prosmixeis").append(tr_str);
+    });
+
+        // ---------------Λίθος---------
+        data = response["Lithos"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_lithos_NAI_uliko").append(tr_str);
+    });
+
+        // ---------------Συνδετικό υλικό (χρώμα)---------
+        data = response["Syndetiko_Ylko"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
         $("#SM_syndetiko_uliko").append(tr_str);
+        
+    });
+    var tr_str = `<option value="other">Άλλο</option>`;
+    $("#SM_syndetiko_uliko").append(tr_str);
 
-         // ---------------Επίχρισμα (είδος)---------
-         data = response["Epixrisma_eidos"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_epixrisma_eidos").append(tr_str);
-        });
-
-         // ---------------Επίχρισμα (χρώμα)---------
-         data = response["Epixrisma_xroma"];
+        // ---------------Επίχρισμα (είδος)---------
+        data = response["Epixrisma_eidos"];
         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_epixrisma_xroma").append(tr_str);
-        });
-        var tr_str = `<option value="other">Άλλο</option>`;
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_epixrisma_eidos").append(tr_str);
+    });
+
+        // ---------------Επίχρισμα (χρώμα)---------
+        data = response["Epixrisma_xroma"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
         $("#SM_epixrisma_xroma").append(tr_str);
+    });
+    var tr_str = `<option value="other">Άλλο</option>`;
+    $("#SM_epixrisma_xroma").append(tr_str);
 
-          // ---------------Τοιχοποιία---------
-          data = response["Toixopoiia"];
-          $.each(data, function() {
-            var tr_str = `<label for="SM_toixopoiia_${this.id}"><b>${this.Selections}</b></label>
-            <input type="checkbox" name="SM_toixopoiia_${this.id}" id="SM_toixopoiia_${this.id}" >`;
-            $("#SM_toixopoiia").append(tr_str);
-        });
+        // ---------------Τοιχοποιία---------
+        data = response["Toixopoiia"];
+        $.each(data, function() {
+        var tr_str = `<label for="SM_toixopoiia_${this.id}"><b>${this.Selections}</b></label>
+        <input type="checkbox" name="SM_toixopoiia_${this.id}" id="SM_toixopoiia_${this.id}" >`;
+        $("#SM_toixopoiia").append(tr_str);
+    });
 
-         // ---------------Δάπεδο---------
-         data = response["Dapedo"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_dapedo").append(tr_str);
-        });
+        // ---------------Δάπεδο---------
+        data = response["Dapedo"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_dapedo").append(tr_str);
+    });
 
-          // ------------Θέση------------
-          data = response["Thesi"];
-          $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_thesi").append(tr_str);
-        });
+        // ------------Θέση------------
+        data = response["Thesi"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_thesi").append(tr_str);
+    });
 
-         // ------------Χρονολόγιση από------------
-         data = response["Xronologisi_apo"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_xronologisi_apo").append(tr_str);
-        });
+        // ------------Χρονολόγιση από------------
+        data = response["Xronologisi_apo"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_xronologisi_apo").append(tr_str);
+    });
 
-         // ------------Χρονολόγιση μέχρι------------
-         data = response["Xronologisi_mexri"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_xronologisi_mexri").append(tr_str);
-        });
+        // ------------Χρονολόγιση μέχρι------------
+        data = response["Xronologisi_mexri"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_xronologisi_mexri").append(tr_str);
+    });
 
-         // ---------------Βάσει---------
-         data = response["Vasei"];
-         $.each(data, function() {
-            var tr_str = `<label for="SM_Vasei_${this.id}"><b>${this.Selections}</b></label>
-            <input type="checkbox" name="SM_Vasei_${this.id}" id="SM_Vasei_${this.id}" >`;
-            $("#SM_Vasei").append(tr_str);
-        });
+        // ---------------Βάσει---------
+        data = response["Vasei"];
+        $.each(data, function() {
+        var tr_str = `<label for="SM_Vasei_${this.id}"><b>${this.Selections}</b></label>
+        <input type="checkbox" name="SM_Vasei_${this.id}" id="SM_Vasei_${this.id}" >`;
+        $("#SM_Vasei").append(tr_str);
+    });
 
-          // ---------------Ανασκαφ. τεχνική---------
-          data = response["Anaskaf_texn"];
-          $.each(data, function() {
-            var tr_str = `<label for="SM_anaskaf_texn_${this.id}"><b>${this.Selections}</b></label>
-            <input type="checkbox" name="SM_anaskaf_texn_${this.id}" id="SM_anaskaf_texn_${this.id}" >`;
-            $("#SM_anaskaf_texn").append(tr_str);
-        });
+        // ---------------Ανασκαφ. τεχνική---------
+        data = response["Anaskaf_texn"];
+        $.each(data, function() {
+        var tr_str = `<label for="SM_anaskaf_texn_${this.id}"><b>${this.Selections}</b></label>
+        <input type="checkbox" name="SM_anaskaf_texn_${this.id}" id="SM_anaskaf_texn_${this.id}" >`;
+        $("#SM_anaskaf_texn").append(tr_str);
+    });
 
-         // ---------------Συνθήκες---------
-         data = response["Sinthikes"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_sinthikes").append(tr_str);
-        });
+        // ---------------Συνθήκες---------
+        data = response["Sinthikes"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_sinthikes").append(tr_str);
+    });
 
-         // ---------------Πιθανότητα επιμίξεων---------
-         data = response["Pithanotita_epim"];
-         $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SM_pithanotita").append(tr_str);
-        });
+        // ---------------Πιθανότητα επιμίξεων---------
+        data = response["Pithanotita_epim"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SM_pithanotita").append(tr_str);
+    });
+
+
+}, (err) => {
+    // Handle error
+    alert("Alert on fill SM form"+err)
+});
+
+cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSkel.php", (response) => {
+    // console.log(response)
+    
+    var data = response["Typos_tafis"];
+    // ---------------Typos SM---------
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SKEL_typos_tafis").append(tr_str);
+    });
+
+        // ---------------Klisi pros---------
+        data = response["Typos_tafou"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SKEL_typos_tafou").append(tr_str);
+    });
+
+        // ---------------Κατηγορία/Τύπος---------
+        data = response["Osta"];
+    $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SKEL_osta").append(tr_str);
+    });
+
+    // ---------------Υλικό---------
+    data = response["Tafi"];
+        $.each(data, function() {
+        var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
+        $("#SKEL_tafi").append(tr_str);
+    }); 
 
 
     }, (err) => {
         // Handle error
-        alert("-Alert on fill SM form-"+err)
+        alert("Alert on fill Skeleton form"+err)
     });
 
-    cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/ReadSkel.php", (response) => {
-        // console.log(response)
-        
-        var data = response["Typos_tafis"];
-        // ---------------Typos SM---------
-        $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SKEL_typos_tafis").append(tr_str);
-        });
-
-         // ---------------Klisi pros---------
-         data = response["Typos_tafou"];
-        $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SKEL_typos_tafou").append(tr_str);
-        });
-
-          // ---------------Κατηγορία/Τύπος---------
-          data = response["Osta"];
-        $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SKEL_osta").append(tr_str);
-        });
-
-        // ---------------Υλικό---------
-        data = response["Tafi"];
-           $.each(data, function() {
-            var tr_str = `<option value="${this.id}">${this.Selections}</option>`;
-            $("#SKEL_tafi").append(tr_str);
-        }); 
-
-
-      }, (err) => {
-            // Handle error
-            alert("-Alert on fill Skeleton form-"+err)
-        });
 
 
 
-
-  })
+})
 
 
 
@@ -835,7 +835,7 @@ function returnSkeleton_URL(){
        // -------------- Έτος --------------------
        var SKEL_etos=$('#SKEL_etos').val();
        if(SKEL_etos == "")
-           SKEL_etos  = 4;
+           SKEL_etos  = 0;
        
        // -------------- ΣΜ κοψίματος --------------------
        var SKEL_sm_kops=$('#SKEL_sm_kops').val();
@@ -920,18 +920,18 @@ function returnSkeleton_URL(){
        
        //<!-- -------------- Μήκος -------------------->
        var SKEL_mikos=$('#SKEL_mikos').val();
-    //    if( SKEL_mikos == "")
-    //        SKEL_mikos  = "-";
+       if( SKEL_mikos == "")
+           SKEL_mikos  = 0;
            
        //<!-- -------------- Πλάτος -------------------->
        var SKEL_platos=$('#SKEL_platos').val() ;
-    //    if( SKEL_platos == "")
-    //        SKEL_platos  = "-";
+       if( SKEL_platos == "")
+           SKEL_platos  = 0;
        
        //<!-- -------------- Βάθος -------------------->
        var SKEL_vathos=$('#SKEL_vathos').val();
-    //    if( SKEL_vathos == "")
-    //        SKEL_vathos  = "-";
+       if( SKEL_vathos == "")
+           SKEL_vathos  = 0;
        
        //<!-- -------------- Οστά -------------------->
        var SKEL_osta = $("#SKEL_osta option:selected").val();  //id 
@@ -990,8 +990,8 @@ function returnSkeleton_URL(){
        
        //<!-- -------------- Μήκ. μηριαίου οστού (να σημειωθεί αριστ. ή δεξιού) -------------------->
        var SKEL_mik_miriaiou_ostou=$('#SKEL_mik_miriaiou_ostou').val();
-    //    if( SKEL_mik_miriaiou_ostou == "")
-    //        SKEL_mik_miriaiou_ostou  = "-";
+       if( SKEL_mik_miriaiou_ostou == "")
+           SKEL_mik_miriaiou_ostou  = 0;
        
        //<!-- -------------- Συνευρήματα (με Α/Α) -------------------->
        var SKEL_syneurimata=$('#SKEL_syneurimata').val();
@@ -1125,7 +1125,7 @@ function insertNewSM(){
 
 }
 
-// ======================== Add SM from menu============================
+// ======================== Add SM from menu ============================
 $('#add_SM_ButtonInMenu').on('click',  function(e){ 
     
     document.querySelector('.containerS').classList.toggle('view-change1');
@@ -1139,13 +1139,21 @@ $('#add_SM_ButtonInMenu').on('click',  function(e){
 
     $("#backToSMfromSkeleton").hide();
     $("#backToMenu").show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
+
+    $("#deleteSkelbutton").hide();
+    $("#updateSkeletonButton").hide()
 
     clearSM();
  
 });
 
 
-// ======================== Search from menu============================
+// ======================== Search from menu ============================
 $('#searchButtonInMenu').on('click',  function(e){ 
     document.querySelector('.containerS').classList.toggle('view-change1');
     $("#topBar").show();
@@ -1157,6 +1165,14 @@ $('#searchButtonInMenu').on('click',  function(e){
 
     $('#backToSMfromSkeleton').hide();
     $('#backToMenu').show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
+
+    $("#deleteSkelbutton").hide();
+    $("#updateSkeletonButton").hide()
 
     clearSM();
  
@@ -1180,7 +1196,7 @@ $('#SMtable tbody').on('click', '.goToSM', function(e){
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#firstScreenContent').animate({scrollTop:0}, '300');
  
@@ -1194,14 +1210,18 @@ $('#SMtable tbody').on('click', '.goToSM', function(e){
     $('#saveSMbutton').hide();
     $('#hasSkeletonSection').hide();
 
+    $("#deleteSkelbutton").hide()
+    $("#updateSkeletonButton").hide()
+
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').show();
+    $('#BackToSearch2').hide();
 
 });
 
 
 //  Go to Skeleton from Array button
-
 function goToSkeleton(e,skelID){
 
     document.getElementById("PopUp").classList.toggle("activeAlert");
@@ -1209,14 +1229,21 @@ function goToSkeleton(e,skelID){
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#secondScreenContent').animate({scrollTop:0}, '300');
 
     fill_Skeleton_inputs(skelID)
 
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').show();
+    $('#searchButton').hide();
+    $('#addNewSkeletonToSM').hide();
+
+    $("#deleteSMbutton").hide();
+    $("#updateSMButton").hide()
 
     $('#updateSkeletonButton').show();
     $('#deleteSkelbutton').show();
@@ -1233,12 +1260,15 @@ function addSkeletonFromArray(SM_id){
     $("#goUpButton").show();
     $("#topBar").show();
 
-    $("#SMtable tbody").empty(); 
+    // $("#SMtable tbody").empty(); 
 
     $('#secondScreenContent').animate({scrollTop:0}, '300');
 
     $('#backToSMfromSkeleton').hide();
-    $('#backToMenu').show();
+    $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').show();
+    $('#searchButton').hide();
 
     $('#addNewSkeletonToSM').show();
     $('#addNewSkeletonToSM').attr('data-id',SM_id);
@@ -1250,23 +1280,22 @@ function addSkeletonFromArray(SM_id){
 //  Update Skeleton  
 $('#updateSkeletonButton').on('click', function(e){ 
 
-    document.getElementById("PopUp").classList.toggle("activeAlert");
-    document.querySelector('.containerS').classList.toggle('view-change2');
-    $("#goUpButton").hide();
-    $("#topBar").hide();
-
-    var URL= returnSM_URL()
+    // document.getElementById("PopUp").classList.toggle("activeAlert");
+    // document.querySelector('.containerS').classList.toggle('view-change2');
+    // $("#goUpButton").hide();
+    // $("#topBar").hide();
 
     var URL= returnSkeleton_URL();
     var Skel_id=$(this).attr('data-id')
+    // alert(myURL+"/Update_Skeleton.php?Skel_id="+Skel_id+"&"+URL);
     cordova.plugins.RESTful.get("db3u04", "FmAF7P2A", myURL+"/Update_Skeleton.php?Skel_id="+Skel_id+"&"+URL, (response) => {
         $("#correctAlert").html("Ενημέρωση <i class='far fa-check-circle' style='font-size:20px;color:#28b83b'></i>")
         $("#correctAlert").animate({bottom: '10%'});
         setTimeout(function() {
             $("#correctAlert").animate({bottom: '-100px'});
         }, 2500);
-        fill_the_List();
-        clearSkeleton();
+        // fill_the_List();
+        // clearSkeleton();
         $('#secondScreenContent').animate({scrollTop:0}, '300');
     }, (err) => {
         alert("error on update skeleton "+err)
@@ -1374,7 +1403,7 @@ $('#updateSMButton').on('click', function(e){
        setTimeout(function() {
            $("#correctAlert").animate({bottom: '-100px'});
        }, 2500);
-       clearSM();
+    //    clearSM();
        $('#firstScreenContent').animate({scrollTop:0}, '300');
        $("#searchButton").hide();
        $("#updateSMButton").hide();
@@ -1392,7 +1421,7 @@ $('#updateSMButton').on('click', function(e){
 //  Delete SM button
 $('#deleteSMbutton').on('click', function(e){ 
     document.getElementById("popupConfirmDelete").classList.toggle("activeSeason");
-    $("#popUpMessage").html("Είσαι σίγουρος πως θέλεις να διαγράψεις την συγκεκριμένη Στρ. Μον και τις σχέσεις της");
+    $("#popUpMessage").html("Είσαι σίγουρος πως θέλεις να διαγράψεις την συγκεκριμένη Στρ. Μον και τις σχέσεις της;");
     $('#popupConfirmDelete2').animate({
         top: "65%"
     }, "fast");
@@ -1424,7 +1453,7 @@ $('#deleteSM').on('click', function(e){
         $("#deleteSMbutton").hide();
         $("#saveSMbutton").show();
         $("#hasSkeletonSection").show();
-        fill_the_List();
+        // fill_the_List();
     }, (err) => {
         alert("error on delete sm"+err)
     });
@@ -1472,6 +1501,8 @@ $("#hasSkeleton").on('click', function(e) {
 
     $('#backToSMfromSkeleton').show();
     $('#backToMenu').hide();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
 
     $('#updateSkeletonButton').hide();
     $('#addNewSkeletonToSM').hide();
@@ -1491,6 +1522,26 @@ $("#backToSMfromSkeleton").on('click', function(e) {
 
     $('#backToSMfromSkeleton').hide();
     $('#backToMenu').show();
+    $('#BackToSearch1').hide();
+    $('#BackToSearch2').hide();
+
+});
+
+// Go Back on Search PopUp from SM
+$("#BackToSearch1").on('click', function(e) {
+
+    document.getElementById("PopUp").classList.toggle("activeAlert");
+    $("#goUpButton").hide();
+    $("#topBar").hide();
+
+});
+
+// Go Back on Search PopUp from Skeleton
+$("#BackToSearch2").on('click', function(e) {
+    document.querySelector('.containerS').classList.toggle('view-change2');
+    document.getElementById("PopUp").classList.toggle("activeAlert");
+    $("#goUpButton").hide();
+    $("#topBar").hide();
 
 });
 
@@ -1814,9 +1865,20 @@ function fill_Skeleton_inputs(skeletonID){
 
 
 function closePopUp(){
+
+    $('.containerS').attr( "class","containerS view" )
+    $('#topBar').hide()
+    $('#firstScreenContent').animate({scrollTop:0}, '300');
+    $('#secondScreenContent').animate({scrollTop:0}, '300');
+    clearSM();
+    clearSkeleton();
+
     document.getElementById("PopUp").classList.toggle("activeAlert");
-    $("#goUpButton").show();
-    $("#topBar").show();
+
+    $("#backToMenu").hide();
+    $("#BackToSearch1").hide();
+    $("#BackToSearch2").hide();
+
 }
 
 
